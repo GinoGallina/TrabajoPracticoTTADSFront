@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="categoryFormEdit" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Edit Category</mat-label>
+        <input matInput formControlName="category" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <mat-label>Edit status</mat-label>
+          <input matInput formControlName="state" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
