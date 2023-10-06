@@ -10,6 +10,9 @@ import { CategoryComponent } from './components/category-components/category/cat
 import { CreateCategoryComponent } from './components/category-components/create-category/create-category.component';
 import { EditCategoryComponent } from './components/category-components/edit-category/edit-category.component';
 
+//Providers
+import { NotificationService } from './services/notification-services/notification.service';
+
 
 //Angular Material
 import { MatTableModule } from '@angular/material/table';
@@ -19,6 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -38,9 +44,11 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatButtonModule, 
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

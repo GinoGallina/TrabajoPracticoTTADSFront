@@ -1,16 +1,27 @@
-<mat-card>
-  <mat-card-content>
-    <form [formGroup]="categoryFormEdit" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="outline">
-        <mat-label>Edit Category</mat-label>
-        <input matInput formControlName="category" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-          <mat-label>Edit status</mat-label>
-          <input matInput formControlName="state" />
-      </mat-form-field>
+<div class="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
+  <!-- Responsive Card Container -->
+  <div class="max-w-xl w-full sm:p-6 mx-auto">
+    <!-- Angular Material Card -->
+    <mat-card>
+      <mat-card-content class="p-6">
+        <form [formGroup]="categoryFormEdit" (ngSubmit)="onSubmit()">
+          <mat-form-field class="w-full" >
+            <mat-label>Edit Category</mat-label>
+            <input matInput formControlName="category" />
+          </mat-form-field>
+          <!-- Replace the input with a mat-select -->
+          <mat-form-field class="w-full" >
+            <mat-label>Edit Status</mat-label>
+            <mat-select formControlName="state">
+              <mat-option value="Active">Active</mat-option>
+              <mat-option value="Archived">Archived</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-    </form>
-  </mat-card-content>
-</mat-card>
+          <!-- Angular Material Button -->
+          <button mat-raised-button color="primary" type="submit">Editar</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

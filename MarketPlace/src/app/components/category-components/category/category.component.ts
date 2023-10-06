@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../../../services/category.service';
+import { NotificationService } from 'src/app/services/notification-services/notification.service';
 
 
 export interface PeriodicElement {
@@ -39,15 +40,28 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class CategoryComponent {
-  constructor(private categoryService:CategoryService){}
+  constructor(private categoryService:CategoryService, private notificationService:NotificationService){}
   CategoryList: Category[] = []
 
   ngOnInit(): void{
     this.categoryService.getCategories().subscribe((res:any) => {
       this.CategoryList = res
-      console.log(this.CategoryList)
     })
   }
 
+onDelete(id: String) {
+  this.categoryService.deleteCategory(id).subscribe(
+    (res: any) => {
+    
+      // Filter out the deleted category from the CategoryList array
+      this.CategoryList = this.CategoryList.filter((cat) => cat._id != id);
+      this.notificationService.showSuccessNotification('Categoria Eliminada')
+    },
+    (error) => {
+      this.notificationService.showErrorNotification('Ocurrió un error eliminado la categoria')
+    }
+  );
+}
+  
   displayedColumns: string[] = ['category', 'state', 'edit','delete'];
 }

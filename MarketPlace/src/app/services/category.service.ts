@@ -18,10 +18,10 @@ export class CategoryService {
   createCategory(data: any){
     return this.http.post(`${this.API_URL}/category`,data);
   }
-  editCategory(data:any){
-    return this.http.patch(`${this.API_URL}/category`,data);
+  editCategory(id:Number,data:any){
+    return this.http.patch(`${this.API_URL}/category/${id}`,data);
   }
-  deleteCategory(id: Number){
+  deleteCategory(id: String){
     return this.http.delete(`${this.API_URL}/category/${id}`)
   }
 }
