@@ -13,9 +13,6 @@ import { EditCategoryComponent } from './components/category-components/edit-cat
 import { PaymentTypesComponent } from './components/payment-type-components/payment-types/payment-types.component';
 import { CreatePaymentTypesComponent } from './components/payment-type-components/create-payment-types/create-payment-types.component';
 import { EditPaymentTypesComponent } from './components/payment-type-components/edit-payment-types/edit-payment-types.component';
-import { DiscountComponent } from './components/discount-components/discount/discount.component';
-import { CreateDiscountComponent } from './components/discount-components/create-discount/create-discount.component';
-import { EditDiscountComponent } from './components/discount-components/edit-discount/edit-discount.component';
 
 //Providers
 import { NotificationService } from './services/notification-services/notification.service';
@@ -31,11 +28,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { DiscountComponent } from './components/discount-components/discount/discount.component';
+import { EditDiscountComponent } from './components/discount-components/edit-discount/edit-discount.component';
+import { CreateDiscountComponent } from './components/discount-components/create-discount/create-discount.component';
+
 
 @NgModule({
   declarations: [
@@ -43,16 +45,14 @@ import { MatListModule } from '@angular/material/list';
     CategoryComponent,
     CreateCategoryComponent,
     EditCategoryComponent,
-    LoginComponentComponent,
-    SideNavbarComponent,
     DiscountComponent,
     EditDiscountComponent,
     CreateDiscountComponent,
-    LoginComponentComponent,
     SideNavbarComponent,
     PaymentTypesComponent,
     CreatePaymentTypesComponent,
     EditPaymentTypesComponent,
+    LoginComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +70,7 @@ import { MatListModule } from '@angular/material/list';
     MatSnackBarModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule,
+    MatListModule
   ],
   providers: [NotificationService],
   bootstrap: [AppComponent],
