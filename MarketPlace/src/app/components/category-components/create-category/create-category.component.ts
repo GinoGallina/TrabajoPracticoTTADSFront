@@ -7,16 +7,17 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-category',
   templateUrl: './create-category.component.html',
-  styleUrls: ['./create-category.component.css']
+  styleUrls: ['./create-category.component.css'],
 })
 export class CreateCategoryComponent implements OnInit {
   categoryForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, 
-    private categoryService: CategoryService ,
+  constructor(
+    private formBuilder: FormBuilder,
+    private categoryService: CategoryService,
     private notificationService: NotificationService,
     private router: Router
-) {}
+  ) {}
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
@@ -27,20 +28,20 @@ export class CreateCategoryComponent implements OnInit {
     if (this.categoryForm.valid) {
       this.categoryService.createCategory(this.categoryForm.value).subscribe(
         (res) => {
-          this.notificationService.showSuccessNotification('Category created successfully');
+          this.notificationService.showSuccessNotification(
+            'Category created successfully'
+          );
           this.router.navigate(['/category']);
         },
         (error) => {
-          this.notificationService.showErrorNotification(`Failed to create category${error.error.message}`);
+          this.notificationService.showErrorNotification(
+            `Failed to create category${error.error.message}`
+          );
         }
       );
-
     } else {
       // Form is invalid, show validation errors to the user
       // You can use the Angular Material form field's error state to display errors
     }
-    
   }
 }
-
-

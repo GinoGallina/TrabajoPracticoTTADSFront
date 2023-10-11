@@ -1,0 +1,11 @@
+.success-notification {
+    background-color: #4caf50;
+    /* Green background color */
+    color: white;
+    /* White text color */
+  }
+  
+  .error-notification {
+    background-color:red;
+    color: white;
+  }
