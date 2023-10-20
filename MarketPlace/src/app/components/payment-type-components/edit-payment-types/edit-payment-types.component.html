@@ -1,0 +1,27 @@
+<div class="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
+  <!-- Responsive Card Container -->
+  <div class="max-w-xl w-full sm:p-6 mx-auto">
+    <!-- Angular Material Card -->
+    <mat-card>
+      <mat-card-content class="p-6">
+        <form [formGroup]="paymentTypeFormEdit" (ngSubmit)="onSubmit()">
+          <mat-form-field class="w-full" >
+            <mat-label>Edit Payement Type</mat-label>
+            <input matInput formControlName="type" />
+          </mat-form-field>
+          <!-- Replace the input with a mat-select -->
+          <mat-form-field class="w-full" >
+            <mat-label>Edit Status</mat-label>
+            <mat-select formControlName="state">
+              <mat-option value="Active">Active</mat-option>
+              <mat-option value="Archived">Archived</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Angular Material Button -->
+          <button mat-raised-button color="primary" type="submit">Editar</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
