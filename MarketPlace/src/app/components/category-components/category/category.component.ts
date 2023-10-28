@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CategoryService } from '../../../services/category.service';
+import { CategoryService } from '../../../services/category-services/category.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 
 

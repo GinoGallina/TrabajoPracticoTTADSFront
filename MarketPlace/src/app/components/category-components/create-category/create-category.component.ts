@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from '../../../services/category.service';
+import { CategoryService } from '../../../services/category-services/category.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 import { Router } from '@angular/router';
 

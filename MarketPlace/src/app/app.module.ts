@@ -24,7 +24,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { LoginComponentComponent } from './components/login-component/login-component.component';
+import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CategoryComponent,
     CreateCategoryComponent,
     EditCategoryComponent,
+    LoginComponentComponent,
+    SideNavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     MatCardModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule
   ],
   providers: [NotificationService],
   bootstrap: [AppComponent]
