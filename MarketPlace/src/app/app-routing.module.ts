@@ -12,24 +12,23 @@ import { DiscountComponent } from './components/discount-components/discount/dis
 import { CreateDiscountComponent } from './components/discount-components/create-discount/create-discount.component';
 import { EditDiscountComponent } from './components/discount-components/edit-discount/edit-discount.component';
 
-
 const routes: Routes = [
   {
     path: 'category',
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
-      { path: 'edit/:id', component: EditCategoryComponent}
-    ]
+      { path: 'edit/:id', component: EditCategoryComponent },
+    ],
   },
-  {path: 'login', component: LoginComponentComponent},
-  { 
-    path: 'payment_type', 
+  { path: 'login', component: LoginComponentComponent },
+  {
+    path: 'payment_type',
     children: [
-      { path: '' ,component: PaymentTypesComponent },
+      { path: '', component: PaymentTypesComponent },
       { path: 'create', component: CreatePaymentTypesComponent },
-      { path: 'edit/:id', component: EditPaymentTypesComponent}
-    ]
+      { path: 'edit/:id', component: EditPaymentTypesComponent },
+    ],
   },
   {
     path: 'discount',

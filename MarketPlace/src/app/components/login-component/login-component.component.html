@@ -1,18 +1,33 @@
 <div class="flex justify-center items-center min-h-screen bg-[#635ca6]">
   <mat-card class="w-full max-w-md p-8">
-    <mat-card-title class="text-2xl justify-center font-semibold mb-6">Iniciar Sesión</mat-card-title>
+    <mat-card-title class="text-2xl justify-center font-semibold mb-6"
+      >Iniciar Sesión</mat-card-title
+    >
     <form [formGroup]="loginForm" (submit)="onSubmit()" class="space-y-4">
       <mat-form-field class="w-full">
-        <input matInput placeholder="Email" formControlName="email" required>
+        <input matInput placeholder="Email" formControlName="email" required />
       </mat-form-field>
       <mat-form-field class="w-full">
-        <input matInput type="password" formControlName="password" placeholder="Password"  name="password" required>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          name="password"
+          required
+        />
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" class="w-full">Login</button>
+      <button mat-raised-button color="primary" type="submit" class="w-full">
+        Login
+      </button>
     </form>
     <div class="flex justify-between mt-4">
-      <a routerLink="/register" class="text-blue-600 hover:underline">Registrarse</a>
-      <a href="#" class="text-blue-600 hover:underline">¿Olvidaste tu contraseña?</a>
+      <a routerLink="/register" class="text-blue-600 hover:underline"
+        >Registrarse</a
+      >
+      <a href="#" class="text-blue-600 hover:underline"
+        >¿Olvidaste tu contraseña?</a
+      >
     </div>
   </mat-card>
 </div>

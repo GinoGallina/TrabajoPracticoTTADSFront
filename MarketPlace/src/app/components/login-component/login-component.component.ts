@@ -8,17 +8,18 @@ import { NotificationService } from 'src/app/services/notification-services/noti
 @Component({
   selector: 'app-login-component',
   templateUrl: './login-component.component.html',
-  styleUrls: ['./login-component.component.css']
+  styleUrls: ['./login-component.component.css'],
 })
 export class LoginComponentComponent {
   loginForm!: FormGroup;
-  user !:Login;
+  user!: Login;
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(
+    private formBuilder: FormBuilder,
     private router: Router,
     private loginServices: LoginService,
     private notificationService: NotificationService,
-) {}
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -31,18 +32,20 @@ export class LoginComponentComponent {
     if (this.loginForm.valid) {
       this.loginServices.login(this.loginForm.value).subscribe(
         (res) => {
-          this.notificationService.showSuccessNotification('Inicio de sesión exitoso! ');
+          this.notificationService.showSuccessNotification(
+            'Inicio de sesión exitoso! ',
+          );
           this.router.navigate(['/category']);
         },
         (error) => {
-          this.notificationService.showErrorNotification(`Login Error: Email o contraseña incorrectos!`);
-        }
+          this.notificationService.showErrorNotification(
+            `Login Error: Email o contraseña incorrectos!`,
+          );
+        },
       );
-
     } else {
       // Form is invalid, show validation errors to the user
       // You can use the Angular Material form field's error state to display errors
     }
-    
   }
 }

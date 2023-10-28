@@ -16,7 +16,7 @@ export class CreateCategoryComponent implements OnInit {
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -29,15 +29,15 @@ export class CreateCategoryComponent implements OnInit {
       this.categoryService.createCategory(this.categoryForm.value).subscribe(
         (res) => {
           this.notificationService.showSuccessNotification(
-            'Category created successfully'
+            'Category created successfully',
           );
           this.router.navigate(['/category']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            `Failed to create category${error.error.message}`
+            `Failed to create category${error.error.message}`,
           );
-        }
+        },
       );
     } else {
       // Form is invalid, show validation errors to the user

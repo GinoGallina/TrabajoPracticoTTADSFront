@@ -17,7 +17,7 @@ export class EditDiscountComponent {
     private discountService: DiscountService,
     private route: ActivatedRoute,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
   ) {}
 
   ngOnInit(): void {
@@ -55,9 +55,9 @@ export class EditDiscountComponent {
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            'Failed to update discount'
+            'Failed to update discount',
           );
-        }
+        },
       );
     } else {
       console.log('Invalid from data');

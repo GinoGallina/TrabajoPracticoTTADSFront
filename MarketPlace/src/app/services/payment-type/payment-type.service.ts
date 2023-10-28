@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaymentTypeService {
-
   API_URL = 'http://localhost:1234';
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   getPaymentTypes() {
     return this.http.get(`${this.API_URL}/payment_type`);
@@ -24,6 +21,6 @@ export class PaymentTypeService {
     return this.http.patch(`${this.API_URL}/payment_type/${id}`, data);
   }
   deletePaymentType(id: String) {
-    return this.http.delete(`${this.API_URL}/payment_type/${id}`)
+    return this.http.delete(`${this.API_URL}/payment_type/${id}`);
   }
 }

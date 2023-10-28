@@ -4,10 +4,10 @@ import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-side-navbar',
   templateUrl: './side-navbar.component.html',
-  styleUrls: ['./side-navbar.component.css']
+  styleUrls: ['./side-navbar.component.css'],
 })
 export class SideNavbarComponent {
-     @ViewChild('sidenav') sidenav!: MatSidenav;
+  @ViewChild('sidenav') sidenav!: MatSidenav;
 
   // Function to toggle the sidenav
   toggleSidenav() {

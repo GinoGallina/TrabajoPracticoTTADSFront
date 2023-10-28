@@ -21,7 +21,7 @@ export class DiscountComponent {
 
   constructor(
     private discountService: DiscountService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
   ) {}
 
   ngOnInit() {
@@ -38,9 +38,9 @@ export class DiscountComponent {
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Failed to delete discount'
+          'Failed to delete discount',
         );
-      }
+      },
     );
   }
 }
