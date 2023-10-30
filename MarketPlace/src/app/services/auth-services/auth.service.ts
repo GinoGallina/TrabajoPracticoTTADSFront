@@ -21,7 +21,7 @@ export class AuthService {
     private router: Router,
   ) {}
 
-  isTokenValid(): Observable<boolean> {
+   isTokenValid(): Observable<boolean> {
     try {
       // Realiza una solicitud HTTP al backend para verificar el token
       return this.http.post<any>(this.baseUrlAuth, null).pipe(

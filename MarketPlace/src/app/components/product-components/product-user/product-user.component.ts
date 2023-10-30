@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product-service/product.service
   styleUrls: ['./product-user.component.css'],
 })
 export class ProductUserComponent implements OnInit {
-  //ProductList: Product[] = [];
+  allProductList: Product[] = [];
   filteredProducts: Product[] = [];
   user!: string;
   searchQuery: string = '';
@@ -36,7 +36,7 @@ export class ProductUserComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.authService.getUser()._id;
     this.productService.getAllProducts().subscribe((res: any) => {
-      //this.ProductList = res;
+      this.allProductList = res;
       this.filteredProducts = res;
       console.log(res);
     });
@@ -44,8 +44,11 @@ export class ProductUserComponent implements OnInit {
   detalle(id: String) {}
 
   filterProducts() {
-    this.filteredProducts = this.filteredProducts.filter((product) => {
-      const query = this.searchQuery.toLowerCase();
+    const query = this.searchQuery.toLowerCase();
+    this.filteredProducts = this.allProductList.filter((product) => {
+      if(query==''){
+        return this.allProductList
+      }
       if (this.searchBy === 'category') {
         return product.category.category.toLowerCase().includes(query);
       } else if (this.searchBy === 'seller') {

@@ -18,11 +18,13 @@ import { HomeComponent } from './components/home-components/home.component';
 import { LoginGuard } from './guards/login.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { ProductUserComponent } from './components/product-components/product-user/product-user.component';
+import { SellerGuard } from './guards/seller.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
     path: 'category',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,AdminGuard],
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
@@ -31,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'payment_type',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,AdminGuard],
     children: [
       { path: '', component: PaymentTypesComponent },
       { path: 'create', component: CreatePaymentTypesComponent },
@@ -40,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'discount',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard,AdminGuard],
     children: [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
@@ -48,8 +50,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'productsAdmin',
-    canActivate: [AuthGuard],
+    path: 'productsSeller',
+    canActivate: [AuthGuard,SellerGuard],
     children: [
       { path: '', component: ProductComponent },
       { path: 'create', component: CreateProductComponent },
