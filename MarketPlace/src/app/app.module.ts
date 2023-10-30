@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 //Components
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,8 @@ import { MatListModule } from '@angular/material/list';
 import { DiscountComponent } from './components/discount-components/discount/discount.component';
 import { EditDiscountComponent } from './components/discount-components/edit-discount/edit-discount.component';
 import { CreateDiscountComponent } from './components/discount-components/create-discount/create-discount.component';
+import { HomeComponent } from './components/home-components/home.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { CreateDiscountComponent } from './components/discount-components/create
     CreatePaymentTypesComponent,
     EditPaymentTypesComponent,
     LoginComponentComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,11 @@ import { CreateDiscountComponent } from './components/discount-components/create
     MatToolbarModule,
     MatListModule,
   ],
-  providers: [NotificationService],
+  providers: [NotificationService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

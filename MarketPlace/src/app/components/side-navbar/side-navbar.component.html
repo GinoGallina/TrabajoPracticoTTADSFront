@@ -1,12 +1,23 @@
-<button mat-raised-button (click)="toggleSidenav()">Menu</button>
+<div class="bg-slate-900 "> 
+  <button class="bg-dark" mat-raised-button (click)="toggleSidenav()">Menu</button>
+</div>
 
-<mat-sidenav-container class="h-full">
+
+<mat-sidenav-container class="h-full ">
   <mat-sidenav #sidenav mode="side" class="bg-blue-700 text-white">
-    <mat-toolbar color="primary">Navigation</mat-toolbar>
+    <mat-toolbar color="primary">MarketPlace</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/home">Home</a>
-      <a mat-list-item routerLink="/about">About</a>
-      <a mat-list-item routerLink="/contact">Contact</a>
+      <a mat-list-item routerLink="/home">Inicio</a>
+      <mat-list-item (click)="toggleOptions()" *ngIf="isAdmin">
+        Opciones
+        <mat-icon mat-list-icon>arrow_drop_down</mat-icon>
+      </mat-list-item>
+      <div *ngIf="showOptions && isAdmin">
+        <a mat-list-item routerLink="/category">Categorias</a>
+        <a mat-list-item routerLink="/payment_type">Tipo de Pago</a>
+        <a mat-list-item routerLink="/discount">Descuentos</a>
+        <a mat-list-item routerLink="/">Usuarios</a>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -31,11 +31,12 @@ export class LoginComponentComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       this.loginServices.login(this.loginForm.value).subscribe(
-        (res) => {
+        (res:any) => {
           this.notificationService.showSuccessNotification(
             'Inicio de sesión exitoso! ',
           );
-          this.router.navigate(['/category']);
+          localStorage.setItem('token', res);
+          this.router.navigate(['/home']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
