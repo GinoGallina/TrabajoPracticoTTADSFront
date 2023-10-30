@@ -13,6 +13,7 @@ import { EditCategoryComponent } from './components/category-components/edit-cat
 import { PaymentTypesComponent } from './components/payment-type-components/payment-types/payment-types.component';
 import { CreatePaymentTypesComponent } from './components/payment-type-components/create-payment-types/create-payment-types.component';
 import { EditPaymentTypesComponent } from './components/payment-type-components/edit-payment-types/edit-payment-types.component';
+import { ProductUserComponent } from './components/product-components/product-user/product-user.component';
 
 //Providers
 import { NotificationService } from './services/notification-services/notification.service';
@@ -21,7 +22,7 @@ import { NotificationService } from './services/notification-services/notificati
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -60,6 +61,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     EditProductComponent,
     CreateProductComponent,
     HomeComponent,
+    ProductUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +80,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    FormsModule,
   ],
   providers: [
     NotificationService,

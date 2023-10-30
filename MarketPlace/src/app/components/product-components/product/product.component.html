@@ -65,24 +65,40 @@
   
   </div>
  -->
-<div class="product-conteiner">
-  <mat-card class="example-card" *ngFor= 'let product of ProductList'>
+
+<div
+  class="product-conteiner bg-slate-900 min-h-screen flex flex-wrap justify-center"
+>
+  <mat-card class="example-card m-4 w-1/4" *ngFor="let product of ProductList">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{product.name}}</mat-card-title>
+      <mat-card-title>{{ product.name }}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img
+      mat-card-image
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      alt="Photo of a Shiba Inu"
+    />
     <mat-card-content>
       <p>
-        {{product.name}}
+        {{ product.name }}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-mini-fab color="warn" (click)="onDelete(product._id)" aria-label="Example icon button with a delete icon">
+      <button
+        mat-mini-fab
+        color="warn"
+        (click)="onDelete(product._id)"
+        aria-label="Example icon button with a delete icon"
+      >
         <mat-icon>delete</mat-icon>
       </button>
-      <button mat-mini-fab color="primary" [routerLink]="['edit',product._id]"
-        aria-label="Example icon button with a delete icon">
+      <button
+        mat-mini-fab
+        color="primary"
+        [routerLink]="['edit', product._id]"
+        aria-label="Example icon button with a delete icon"
+      >
         <mat-icon>edit</mat-icon>
       </button>
     </mat-card-actions>

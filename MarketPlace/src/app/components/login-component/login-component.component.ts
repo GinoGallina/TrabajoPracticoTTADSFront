@@ -31,7 +31,7 @@ export class LoginComponentComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       this.loginServices.login(this.loginForm.value).subscribe(
-        (res:any) => {
+        (res: any) => {
           this.notificationService.showSuccessNotification(
             'Inicio de sesión exitoso! ',
           );

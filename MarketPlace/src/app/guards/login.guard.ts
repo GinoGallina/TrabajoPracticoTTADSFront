@@ -2,42 +2,44 @@
 
 import { Injectable } from '@angular/core';
 import {
-    CanActivate,
-    ActivatedRouteSnapshot,
-    RouterStateSnapshot,
-    UrlTree,
-    Router,
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  Router,
 } from '@angular/router';
 import { Observable, of, switchMap, tap } from 'rxjs';
 import { AuthService } from '../services/auth-services/auth.service';
 
-
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginGuard implements CanActivate {
-    constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): Observable<boolean> {
-        const token=localStorage.getItem('token');
-        if(!token){
-            const rtaObservable$: Observable<boolean> = of(true);
-            return rtaObservable$;
-        }
-        return this.authService.isTokenValid().pipe(
-            switchMap((isValid) => {
-                if (!isValid) {
-                    console.log('No está logueado, haga login');
-                    return of(true); // Devuelve false si no está logueado
-                }
-
-                console.log('si esta logueado LOGIN')
-                this.router.navigate(['/home']);
-                return of(true); 
-            })
-        );
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+  ): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      const rtaObservable$: Observable<boolean> = of(true);
+      return rtaObservable$;
     }
+    return this.authService.isTokenValid().pipe(
+      switchMap((isValid) => {
+        if (!isValid) {
+          console.log('No está logueado, haga login');
+          return of(true); // Devuelve false si no está logueado
+        }
+
+        console.log('si esta logueado LOGIN');
+        this.router.navigate(['/home']);
+        return of(true);
+      }),
+    );
+  }
 }

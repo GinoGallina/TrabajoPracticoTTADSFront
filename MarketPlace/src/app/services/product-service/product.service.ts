@@ -12,6 +12,9 @@ export class ProductService {
     const params = new HttpParams().set('seller', seller);
     return this.http.get(`${this.API_URL}/products`, { params });
   }
+  getAllProducts() {
+    return this.http.get(`${this.API_URL}/products`);
+  }
   getOneProduct(id: String) {
     return this.http.get(`${this.API_URL}/products/${id}`);
   }

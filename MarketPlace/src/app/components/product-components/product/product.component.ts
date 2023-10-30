@@ -1,19 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { filter, first } from 'rxjs';
+import { AuthService } from 'src/app/services/auth-services/auth.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 import { ProductService } from 'src/app/services/product-service/product.service';
-interface Product {
-  _id: String;
-  category: any;
-  seller: any;
-  name: String;
-  state: String;
-  description: string;
-  price: Number;
-  strock: Number;
-  img: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import { Product } from 'src/app/interfaces/product';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -21,7 +12,7 @@ interface Product {
 })
 export class ProductComponent implements OnInit {
   ProductList: Product[] = [];
-  seller: string = '6535cfab26e6c0e76d9dba6d';
+  seller!: string;
   displayedColumns: string[] = [
     'category',
     'name',
@@ -32,11 +23,16 @@ export class ProductComponent implements OnInit {
     'img',
     'delete',
   ];
+
   constructor(
     private productService: ProductService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private authService: AuthService,
   ) {}
+
   ngOnInit(): void {
+    //this.seller='6535cfab26e6c0e76d9dba6d'
+    this.seller = this.authService.getUser()._id;
     this.productService.getProducts(this.seller).subscribe((res: any) => {
       this.ProductList = res;
     });
@@ -49,9 +45,9 @@ export class ProductComponent implements OnInit {
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Failed to delete Product'
+          'Failed to delete Product',
         );
-      }
+      },
     );
   }
 }

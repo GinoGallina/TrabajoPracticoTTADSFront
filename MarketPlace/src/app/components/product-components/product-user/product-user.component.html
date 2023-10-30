@@ -1,0 +1,64 @@
+<div class="bg-slate-900 min-h-screen">
+  <h1 class="text-white text-center text-3xl">PRODUCTOS</h1>
+
+  <div class="justify-end flex">
+    <input
+      matInput
+      placeholder="Buscar"
+      [(ngModel)]="searchQuery"
+      (input)="filterProducts()"
+    />
+
+    <mat-select
+      class="text-center"
+      [(ngModel)]="searchBy"
+      (ngModelChange)="filterProducts()"
+      style="background-color: rgb(40, 40, 40); color: white; width: 20%"
+    >
+      <mat-option class="text-white" value="category">Por Categoría</mat-option>
+      <mat-option value="seller">Por Vendedor</mat-option>
+    </mat-select>
+  </div>
+
+  <div class="product-conteiner flex flex-wrap justify-center">
+    <mat-card
+      class="example-card m-4 w-1/4"
+      *ngFor="let product of filteredProducts"
+    >
+      <mat-card-header class="flex justify-center">
+        <mat-card-title>{{ product.name }}</mat-card-title>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-content>
+        <div class="flex flex-col">
+          <p class="text-center">{{ product.description }}</p>
+          <p class="text-center">${{ product.price }}</p>
+          <p class="text-center">Stock: {{ product.stock }}</p>
+          <p class="text-center">Categoria: {{ product.category.category }}</p>
+          <p class="text-center">Seller: {{ product.seller.email }}</p>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="flex justify-between">
+        <button
+          mat-button
+          color="primary"
+          (click)="detalle(product._id)"
+          aria-label="Example icon button with a delete icon"
+        >
+          Ver Detalle
+        </button>
+        <button
+          mat-button
+          color="success"
+          aria-label="Example icon button with a delete icon"
+        >
+          Agregar carrito
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
