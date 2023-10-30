@@ -27,11 +27,10 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private notificationService: NotificationService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    //this.seller='6535cfab26e6c0e76d9dba6d'
     this.seller = this.authService.getUser()._id;
     this.productService.getProducts(this.seller).subscribe((res: any) => {
       this.ProductList = res;
@@ -45,9 +44,9 @@ export class ProductComponent implements OnInit {
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Failed to delete Product',
+          'Failed to delete Product'
         );
-      },
+      }
     );
   }
 }

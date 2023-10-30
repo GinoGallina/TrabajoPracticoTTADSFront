@@ -1,1 +1,89 @@
-<p>create-product works!</p>
+<div
+  class="bg-slate-900 min-h-screen flex flex-col items-center justify-center"
+>
+  <div class="max-w-md w-full sm:p-6 mx-auto">
+    <mat-card>
+      <mat-card-content class="p-6">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+
+            <mat-form-field class="w-full">
+                <mat-label>Seller</mat-label>
+                <input
+                  matInput
+                  formControlName="seller"
+                  placeholder="Enter your id"
+                />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Category</mat-label>
+              <input
+                matInput
+                formControlName="category"
+                placeholder="Enter your category"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Name</mat-label>
+                <input
+                  matInput
+                  formControlName="name"
+                  placeholder="Enter name"
+                />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Description</mat-label>
+                <input
+                  matInput
+                  formControlName="description"
+                  placeholder="Enter product description"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="w-full">
+                <mat-label>Price</mat-label>
+                <input
+                  matInput
+                  formControlName="price"
+                  placeholder="Enter product price"
+                />
+              </mat-form-field>
+              <mat-form-field class="w-full">
+                <mat-label>Stock</mat-label>
+                <input
+                  matInput
+                  formControlName="stock"
+                  placeholder="Enter product stock"
+                />
+              </mat-form-field>
+
+              <mat-form-field class="w-full">
+                <mat-label>State</mat-label>
+                <mat-select formControlName="state">
+                  <mat-option value="Active">Active</mat-option>
+                  <mat-option value="Archived">Archived</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="w-full">
+                <mat-label>Image url </mat-label>
+                <input
+                  matInput
+                  formControlName="img"
+                  placeholder="Enter url"
+                />
+              </mat-form-field>
+          </div>
+          <div class="flex justify-center">
+            <button mat-raised-button color="primary" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
