@@ -16,7 +16,7 @@ export class CreateDiscountComponent implements OnInit {
     private discountService: DiscountService,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -33,15 +33,15 @@ export class CreateDiscountComponent implements OnInit {
       this.discountService.createDiscount(this.discountForm.value).subscribe(
         (res: any) => {
           this.notificationService.showSuccessNotification(
-            'Discount created successfully'
+            'Discount created successfully',
           );
           this.router.navigate(['/discount']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            `Failed to create discount${error.error.message}`
+            `Failed to create discount${error.error.message}`,
           );
-        }
+        },
       );
     } else {
       // Form is invalid, show validation errors to the user

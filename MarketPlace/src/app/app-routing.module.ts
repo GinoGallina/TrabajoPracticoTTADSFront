@@ -14,19 +14,23 @@ import { EditDiscountComponent } from './components/discount-components/edit-dis
 import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
 import { ProductComponent } from './components/product-components/product/product.component';
 import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
+import { HomeComponent } from './components/home-components/home.component';
+import { LoginGuard } from './guards/login.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'category',
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
       { path: 'edit/:id', component: EditCategoryComponent },
     ],
   },
-  { path: 'login', component: LoginComponentComponent },
   {
     path: 'payment_type',
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: PaymentTypesComponent },
       { path: 'create', component: CreatePaymentTypesComponent },
@@ -35,6 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'discount',
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
@@ -50,15 +55,13 @@ const routes: Routes = [
     ],
   },
 
-  { path: 'login', component: LoginComponentComponent },
   {
-    path: 'payment_type',
-    children: [
-      { path: '', component: PaymentTypesComponent },
-      { path: 'create', component: CreatePaymentTypesComponent },
-      { path: 'edit/:id', component: EditPaymentTypesComponent },
-    ],
+    path: 'login',
+    component: LoginComponentComponent,
+    canActivate: [LoginGuard],
   },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir la página de inicio a la página de inicio de sesión
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

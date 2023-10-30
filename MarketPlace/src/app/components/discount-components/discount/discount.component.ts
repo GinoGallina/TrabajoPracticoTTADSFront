@@ -23,7 +23,10 @@ export class DiscountComponent {
   constructor(
     private discountService: DiscountService,
     private notificationService: NotificationService,
+<<<<<<< HEAD
     private route: ActivatedRoute
+=======
+>>>>>>> ab18bf7bc9be485b35e441c8b3578e37140d4625
   ) {}
 
   ngOnInit() {
@@ -40,9 +43,9 @@ export class DiscountComponent {
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Failed to delete discount'
+          'Failed to delete discount',
         );
-      }
+      },
     );
   }
 }

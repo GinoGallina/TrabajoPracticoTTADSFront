@@ -1,19 +1,40 @@
-<div class="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
-  <div class="overflow-x-auto shadow-md bg-grey text-white w-3/4 mx-auto my-2 rounded-md">
-  <mat-table [dataSource]="CategoryList" class="custom-table ">
+<div
+  class="bg-slate-900 min-h-screen flex flex-col items-center justify-center"
+>
+  <div
+    class="overflow-x-auto shadow-md bg-grey text-white w-3/4 mx-auto my-2 rounded-md"
+  >
+    <mat-table [dataSource]="CategoryList" class="custom-table">
+      <!-- Category Column -->
+      <ng-container matColumnDef="category" class="mat-grey">
+        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell *matCellDef="let category">
+          {{ category.category }}
+        </mat-cell>
+      </ng-container>
 
-    <!-- Category Column -->
-    <ng-container matColumnDef="category" class="mat-grey">
-      <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-      <mat-cell *matCellDef="let category"> {{category.category}} </mat-cell>
-    </ng-container>
+      <!-- State Column -->
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+        <mat-cell *matCellDef="let category"> {{ category.state }} </mat-cell>
+      </ng-container>
 
-    <!-- State Column -->
-    <ng-container matColumnDef="state">
-      <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
-      <mat-cell *matCellDef="let category"> {{category.state}} </mat-cell>
-    </ng-container>
+      <!-- Edit Column -->
+      <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+        <mat-cell *matCellDef="let category">
+          <button
+            mat-mini-fab
+            color="primary"
+            [routerLink]="['edit', category._id]"
+            aria-label="Example icon button with a delete icon"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
+<<<<<<< HEAD
     <!-- Discounts Column -->
     <ng-container matColumnDef="discounts">
       <mat-header-cell *matHeaderCellDef> Discounts </mat-header-cell>
@@ -33,26 +54,37 @@
         </button>
       </mat-cell>
     </ng-container>
+=======
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+        <mat-cell *matCellDef="let category">
+          <button
+            mat-mini-fab
+            color="warn"
+            (click)="onDelete(category._id)"
+            aria-label="Example icon button with a delete icon"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+>>>>>>> ab18bf7bc9be485b35e441c8b3578e37140d4625
 
-    <!-- Delete Column -->
-    <ng-container matColumnDef="delete">
-      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-      <mat-cell *matCellDef="let category">
-        <button mat-mini-fab color="warn" (click)="onDelete(category._id)" aria-label="Example icon button with a delete icon">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-gray-700 hover:text-white"></mat-row>
-  </mat-table>
-<div>
-<!-- Create Category Button -->
-  <button
-    class="bg-indigo-500 text-white font-mono font-normal items-center h-10 px-4 rounded-full hover:bg-indigo-600 active:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 mt-4"
-    [routerLink]="'create'">
-  Create Category
-</button>
-
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        class="hover:bg-gray-700 hover:text-white"
+      ></mat-row>
+    </mat-table>
+    <div>
+      <!-- Create Category Button -->
+      <button
+        class="bg-indigo-500 text-white font-mono font-normal items-center h-10 px-4 rounded-full hover:bg-indigo-600 active:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 mt-4"
+        [routerLink]="'create'"
+      >
+        Create Category
+      </button>
+    </div>
+  </div>
 </div>
