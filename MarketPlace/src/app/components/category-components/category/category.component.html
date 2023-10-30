@@ -14,6 +14,15 @@
       <mat-cell *matCellDef="let category"> {{category.state}} </mat-cell>
     </ng-container>
 
+    <!-- Discounts Column -->
+    <ng-container matColumnDef="discounts">
+      <mat-header-cell *matHeaderCellDef> Discounts </mat-header-cell>
+      <mat-cell *matCellDef="let category">
+        <button mat-raised-button color="primary"  >Discounts</button>
+      </mat-cell>
+    </ng-container>
+
+
     <!-- Edit Column -->
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>

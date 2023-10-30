@@ -28,7 +28,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -37,7 +36,9 @@ import { MatListModule } from '@angular/material/list';
 import { DiscountComponent } from './components/discount-components/discount/discount.component';
 import { EditDiscountComponent } from './components/discount-components/edit-discount/edit-discount.component';
 import { CreateDiscountComponent } from './components/discount-components/create-discount/create-discount.component';
-
+import { ProductComponent } from './components/product-components/product/product.component';
+import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
+import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,10 @@ import { CreateDiscountComponent } from './components/discount-components/create
     PaymentTypesComponent,
     CreatePaymentTypesComponent,
     EditPaymentTypesComponent,
-    LoginComponentComponent
+    LoginComponentComponent,
+    ProductComponent,
+    EditProductComponent,
+    CreateProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,7 @@ import { CreateDiscountComponent } from './components/discount-components/create
     MatSnackBarModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [NotificationService],
   bootstrap: [AppComponent],

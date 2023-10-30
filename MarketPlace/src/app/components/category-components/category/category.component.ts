@@ -44,5 +44,11 @@ export class CategoryComponent {
     );
   }
 
-  displayedColumns: string[] = ['category', 'state', 'edit', 'delete'];
+  displayedColumns: string[] = [
+    'category',
+    'state',
+    'discounts',
+    'edit',
+    'delete',
+  ];
 }

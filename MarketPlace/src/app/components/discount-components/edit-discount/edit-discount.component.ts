@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DiscountService } from 'src/app/services/discount.service';
+import { DiscountService } from 'src/app/services/discount-services/discount.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 
 @Component({

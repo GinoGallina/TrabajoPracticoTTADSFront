@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DiscountService } from 'src/app/services/discount.service';
+import { DiscountService } from 'src/app/services/discount-services/discount.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 
 @Component({

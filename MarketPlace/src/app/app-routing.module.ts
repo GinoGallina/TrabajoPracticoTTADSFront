@@ -11,7 +11,9 @@ import { EditPaymentTypesComponent } from './components/payment-type-components/
 import { DiscountComponent } from './components/discount-components/discount/discount.component';
 import { CreateDiscountComponent } from './components/discount-components/create-discount/create-discount.component';
 import { EditDiscountComponent } from './components/discount-components/edit-discount/edit-discount.component';
-
+import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
+import { ProductComponent } from './components/product-components/product/product.component';
+import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
@@ -19,17 +21,17 @@ const routes: Routes = [
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
-      { path: 'edit/:id', component: EditCategoryComponent}
-    ]
+      { path: 'edit/:id', component: EditCategoryComponent },
+    ],
   },
-  {path: 'login', component: LoginComponentComponent},
-  { 
-    path: 'payment_type', 
+  { path: 'login', component: LoginComponentComponent },
+  {
+    path: 'payment_type',
     children: [
-      { path: '' ,component: PaymentTypesComponent },
+      { path: '', component: PaymentTypesComponent },
       { path: 'create', component: CreatePaymentTypesComponent },
-      { path: 'edit/:id', component: EditPaymentTypesComponent}
-    ]
+      { path: 'edit/:id', component: EditPaymentTypesComponent },
+    ],
   },
   {
     path: 'discount',
@@ -37,6 +39,14 @@ const routes: Routes = [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
       { path: 'edit/:id', component: EditDiscountComponent },
+    ],
+  },
+  {
+    path: 'product',
+    children: [
+      { path: '', component: ProductComponent },
+      { path: 'create', component: CreateProductComponent },
+      { path: 'edit/:id', component: EditProductComponent },
     ],
   },
 
