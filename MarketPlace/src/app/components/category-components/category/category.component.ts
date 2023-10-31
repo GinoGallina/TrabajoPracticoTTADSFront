@@ -19,7 +19,7 @@ interface Category {
 export class CategoryComponent {
   constructor(
     private categoryService: CategoryService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {}
   CategoryList: Category[] = [];
 
@@ -38,9 +38,9 @@ export class CategoryComponent {
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Ocurrió un error eliminado la categoria',
+          'Ocurrió un error eliminado la categoria'
         );
-      },
+      }
     );
   }
 

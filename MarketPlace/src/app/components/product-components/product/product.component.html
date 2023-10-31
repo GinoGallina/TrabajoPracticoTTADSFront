@@ -1,71 +1,3 @@
-<!-- <div class="bg-slate-900 min-h-screen flex flex-col items-center justify-center">
-    <div class="overflow-x-auto shadow-md bg-grey text-white w-3/4 mx-auto my-2 rounded-md">
-    <mat-table [dataSource]="ProductList" class="custom-table ">
-      <!-- Category Column 
-      <ng-container matColumnDef="category" class="mat-grey">
-        <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.category}} </mat-cell>
-      </ng-container>
-
-      <!-- Name Column 
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> name </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.name}} </mat-cell>
-      </ng-container>
-
-        <!-- Description Column --
-      <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef> description </mat-header-cell>
-        <mat-cell *matCellDef="let product"> {{product.description}} </mat-cell>
-       </ng-container>
-
-        <!-- Price Column -
-        <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef> price </mat-header-cell>
-            <mat-cell *matCellDef="let product"> {{product.price}} </mat-cell>
-        </ng-container>
-
-        <!-- Stock Column --
-        <ng-container matColumnDef="stock">
-            <mat-header-cell *matHeaderCellDef> stock </mat-header-cell>
-            <mat-cell *matCellDef="let product"> {{product.stock}} </mat-cell>
-        </ng-container>
-  
-      <!-- Edit Column --
-      <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-        <mat-cell *matCellDef="let product">
-          <button mat-mini-fab color="primary" [routerLink]="['edit',product._id]"
-            aria-label="Example icon button with a delete icon">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-  
-      <!-- Delete Column --
-      <ng-container matColumnDef="delete">
-        <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-        <mat-cell *matCellDef="let product">
-          <button mat-mini-fab color="warn" (click)="onDelete(product._id)" aria-label="Example icon button with a delete icon">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-  
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-gray-700 hover:text-white"></mat-row>
-    </mat-table>
-  <div>
-  <!-- Create Category Button --
-    <button
-      class="bg-indigo-500 text-white font-mono font-normal items-center h-10 px-4 rounded-full hover:bg-indigo-600 active:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 mt-4"
-      [routerLink]="'create'">
-    Create product
-  </button>
-  
-  </div>
- -->
-
 <div
   class="product-conteiner bg-slate-900 min-h-screen flex flex-wrap justify-center"
 >
@@ -81,7 +13,7 @@
     />
     <mat-card-content>
       <p>
-        {{ product.name }}
+        {{ product.description }}
       </p>
     </mat-card-content>
     <mat-card-actions>
