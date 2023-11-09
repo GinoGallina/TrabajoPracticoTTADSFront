@@ -7,8 +7,6 @@
     <mat-card>
       <mat-card-content class="p-6">
         <form [formGroup]="productFormEdit" (ngSubmit)="onSubmit()">
-
-
           <mat-form-field class="w-full">
             <mat-label>Edit price</mat-label>
             <input matInput formControlName="price" />
@@ -26,7 +24,7 @@
 
           <mat-form-field class="w-full" formGroupName="category">
             <mat-label>Edit category</mat-label>
-            <input matInput formControlName="category"/>
+            <input matInput formControlName="category" />
           </mat-form-field>
 
           <mat-form-field class="w-full">

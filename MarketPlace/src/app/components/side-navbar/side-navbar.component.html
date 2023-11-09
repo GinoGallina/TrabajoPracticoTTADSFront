@@ -9,7 +9,7 @@
   </button>
 </div>
 
-<mat-sidenav-container class="h-full">
+<mat-sidenav-container class="h-screen">
   <mat-sidenav #sidenav mode="side" class="bg-blue-700 text-white">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
@@ -30,6 +30,9 @@
       <a *ngIf="isSeller || isUser" mat-list-item routerLink="/products"
         >Productos</a
       >
+      <a *ngIf="isSeller || isUser" mat-list-item routerLink="/cart"
+        >Mis Compras
+      </a>
       <div class="bg-red-500 rounded m-2">
         <a
           mat-list-item

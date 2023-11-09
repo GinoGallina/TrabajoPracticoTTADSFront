@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> {
     return this.authService.isTokenValid().pipe(
       tap((isValid) => {
-        console.log(isValid)
+        console.log(isValid);
         if (!isValid) {
           // Redirigir a la página de inicio de sesión o mostrar un mensaje de error.
           this.router.navigate(['/login']);

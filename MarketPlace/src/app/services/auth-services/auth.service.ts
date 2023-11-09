@@ -16,12 +16,9 @@ export class AuthService {
   private userSubject = new BehaviorSubject<string | null>(null);
   user$ = this.userSubject.asObservable();
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-   isTokenValid(): Observable<boolean> {
+  isTokenValid(): Observable<boolean> {
     try {
       // Realiza una solicitud HTTP al backend para verificar el token
       return this.http.post<any>(this.baseUrlAuth, null).pipe(
@@ -33,10 +30,10 @@ export class AuthService {
         catchError((error) => {
           console.error(
             'Error al verificar el token en el servidor:',
-            error.error,
+            error.error
           );
           return of(false); // Devuelve false si hay un error o el token no es válido
-        }),
+        })
       );
     } catch (error) {
       console.error('Error al verificar el token:', error);

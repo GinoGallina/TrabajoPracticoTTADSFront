@@ -21,7 +21,7 @@ export class CreateProductComponent {
     private productService: ProductService,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -42,15 +42,15 @@ export class CreateProductComponent {
       this.productService.createProduct(this.productForm.value).subscribe(
         (res: any) => {
           this.notificationService.showSuccessNotification(
-            'product created successfully'
+            'product created successfully',
           );
           this.router.navigate(['/product']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            `Failed to create product${error.error.message}`
+            `Failed to create product${error.error.message}`,
           );
-        }
+        },
       );
     } else {
       // Form is invalid, show validation errors to the user

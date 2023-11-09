@@ -31,31 +31,31 @@
           >
             <mat-icon>edit</mat-icon>
           </button>
+        </mat-cell> </ng-container
+      >-->
+
+      <!-- Discounts Column -->
+      <ng-container matColumnDef="discounts">
+        <mat-header-cell *matHeaderCellDef> Discounts </mat-header-cell>
+        <mat-cell *matCellDef="let category">
+          <button mat-raised-button color="primary">Discounts</button>
         </mat-cell>
-      </ng-container>-->
+      </ng-container>
 
-    <!-- Discounts Column -->
-    <ng-container matColumnDef="discounts">
-      <mat-header-cell *matHeaderCellDef> Discounts </mat-header-cell>
-      <mat-cell *matCellDef="let category">
-        <button mat-raised-button color="primary">Discounts</button>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Edit Column -->
-    <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-      <mat-cell *matCellDef="let category">
-        <button
+      <!-- Edit Column -->
+      <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+        <mat-cell *matCellDef="let category">
+          <button
             mat-mini-fab
             color="primary"
             [routerLink]="['edit', category._id]"
-          aria-label="Example icon button with a delete icon"
+            aria-label="Example icon button with a delete icon"
           >
-          <mat-icon>edit</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
       <!-- Delete Column -->
       <ng-container matColumnDef="delete">
         <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>

@@ -20,11 +20,12 @@ import { AuthGuard } from './guards/auth.guard';
 import { ProductUserComponent } from './components/product-components/product-user/product-user.component';
 import { SellerGuard } from './guards/seller.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
 
 const routes: Routes = [
   {
     path: 'category',
-    canActivate: [AuthGuard,AdminGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
@@ -33,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'payment_type',
-    canActivate: [AuthGuard,AdminGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       { path: '', component: PaymentTypesComponent },
       { path: 'create', component: CreatePaymentTypesComponent },
@@ -42,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'discount',
-    canActivate: [AuthGuard,AdminGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
@@ -51,7 +52,7 @@ const routes: Routes = [
   },
   {
     path: 'productsSeller',
-    canActivate: [AuthGuard,SellerGuard],
+    canActivate: [AuthGuard, SellerGuard],
     children: [
       { path: '', component: ProductComponent },
       { path: 'create', component: CreateProductComponent },
@@ -63,7 +64,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [{ path: '', component: ProductUserComponent }],
   },
-
+  {
+    path: 'cart',
+    canActivate: [],
+    children: [{ path: '', component: CartListComponent }],
+  },
   {
     path: 'login',
     component: LoginComponentComponent,

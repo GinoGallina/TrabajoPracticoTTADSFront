@@ -13,7 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(
     request: HttpRequest<any>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<any>> {
     // Obtén el token del almacenamiento local (o de donde lo tengas)
     const token = localStorage.getItem('token');

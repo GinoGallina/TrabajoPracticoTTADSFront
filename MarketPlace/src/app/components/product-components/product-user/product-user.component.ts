@@ -46,8 +46,8 @@ export class ProductUserComponent implements OnInit {
   filterProducts() {
     const query = this.searchQuery.toLowerCase();
     this.filteredProducts = this.allProductList.filter((product) => {
-      if(query==''){
-        return this.allProductList
+      if (query == '') {
+        return this.allProductList;
       }
       if (this.searchBy === 'category') {
         return product.category.category.toLowerCase().includes(query);
