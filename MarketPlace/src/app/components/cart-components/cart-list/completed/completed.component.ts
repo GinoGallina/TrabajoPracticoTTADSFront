@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CartItem } from 'src/app/interfaces/cart';
+import { CartService } from 'src/app/services/cart-services/cart.service';
 
 @Component({
   selector: 'app-completed',
@@ -6,33 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./completed.component.css'],
 })
 export class CompletedComponent {
-  completedPurchases: any[] = [
-    // Example data - replace with real data
-    {
-      id: '123',
-      date: new Date(),
-      amount: 299.99,
-      shipmentStatus: 'completed',
-      products: [
-        { name: 'Product 1', quantity: 2, price: 50 },
-        { name: 'Product 2', quantity: 1, price: 199.99 },
-      ],
-    },
-    {
-      id: '123',
-      date: new Date(),
-      amount: 299.99,
-      shipmentStatus: 'completed',
-      products: [
-        { name: 'Product 1', quantity: 2, price: 50 },
-        { name: 'Product 2', quantity: 1, price: 199.99 },
-      ],
-    },
-    // ... other purchases
-  ];
+  constructor(private cartService: CartService) {}
+  cartList: CartItem[] = [];
+  totalItems: number = 0;
+  totalAmount!: Number;
+
+  ngOnInit(): void {
+    this.cartService.getCart('Completed').subscribe((res: any) => {
+      this.cartList = res;
+      console.log(this.cartList);
+      this.totalItems = this.cartList[0].orders.length;
+      this.totalAmount = this.cartList[0].orders.reduce(
+        (total, item) => total + item.amount * item.quantity,
+        0
+      );
+    });
+  }
 
   toggleDetails(index: number): void {
-    this.completedPurchases[index].expanded =
-      !this.completedPurchases[index].expanded;
+    this.cartList[index].expanded = !this.cartList[index].expanded;
   }
 }

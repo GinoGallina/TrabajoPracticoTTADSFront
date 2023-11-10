@@ -18,7 +18,7 @@ export class EditProductComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private notificationService: NotificationService,
-    private router: Router,
+    private router: Router
   ) {}
   ngOnInit() {
     this.productId = this.route.snapshot.params['id'];
@@ -67,15 +67,14 @@ export class EditProductComponent implements OnInit {
       const formData = this.productFormEdit.value;
       this.productService.editProduct(this.productId, formData).subscribe(
         (res: any) => {
-          console.log('product updated successfully:', res);
           this.notificationService.showSuccessNotification('product updated');
           this.router.navigate(['/product']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            'Failed to update product',
+            'Failed to update product'
           );
-        },
+        }
       );
     } else {
       console.log('Invalid from data');

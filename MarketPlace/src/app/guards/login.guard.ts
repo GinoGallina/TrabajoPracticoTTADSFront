@@ -15,14 +15,11 @@ import { AuthService } from '../services/auth-services/auth.service';
   providedIn: 'root',
 })
 export class LoginGuard implements CanActivate {
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
+    state: RouterStateSnapshot
   ): Observable<boolean> {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -32,14 +29,12 @@ export class LoginGuard implements CanActivate {
     return this.authService.isTokenValid().pipe(
       switchMap((isValid) => {
         if (!isValid) {
-          console.log('No está logueado, haga login');
           return of(true); // Devuelve false si no está logueado
         }
 
-        console.log('si esta logueado LOGIN');
         this.router.navigate(['/home']);
         return of(true);
-      }),
+      })
     );
   }
 }

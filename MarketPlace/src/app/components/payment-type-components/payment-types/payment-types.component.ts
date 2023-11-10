@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 import { PaymentTypeService } from 'src/app/services/payment-type/payment-type.service';
 
-interface PaymentType {
+export interface PaymentType {
   _id: string;
   type: string;
   state: string;
@@ -19,7 +19,7 @@ interface PaymentType {
 export class PaymentTypesComponent implements OnInit {
   constructor(
     private paymentTypeService: PaymentTypeService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {}
   PaymentTypeList: PaymentType[] = [];
 
@@ -34,17 +34,17 @@ export class PaymentTypesComponent implements OnInit {
       (res: any) => {
         // Filter out the deleted category from the CategoryList array
         this.PaymentTypeList = this.PaymentTypeList.filter(
-          (cat) => cat._id != id,
+          (cat) => cat._id != id
         );
         this.notificationService.showSuccessNotification(
-          'Tipo de pago Eliminada',
+          'Tipo de pago Eliminada'
         );
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Ocurrió un error eliminado el Tipo de pago',
+          'Ocurrió un error eliminado el Tipo de pago'
         );
-      },
+      }
     );
   }
 

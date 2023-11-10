@@ -1,0 +1,28 @@
+.image-hover-effect {
+    transition: transform 0.5s, opacity 0.5s;
+    display: block;
+    max-width: 100%; 
+  }
+  
+  .image-hover-effect:hover {
+    transform: scale(1.1) rotate(10deg); 
+    opacity: 0.8; 
+  }
+
+  .image{
+    width: 600px;
+  }
+
+  @keyframes rotateText {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotating-text {
+    animation: rotateText 2s ease-in-out;
+  }
+  

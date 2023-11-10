@@ -7,40 +7,40 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Purchase ID
+                    ID De Compra
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Date
+                    Tipo de pago
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Amount
+                    Total
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Shipment Status
+                    Estado
                   </th>
          
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200" >
-                <ng-container *ngFor="let purchase of completedPurchases; let i = index">
+                <ng-container *ngFor="let cart of cartList; let i = index">
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">{{ purchase.id }}</div>
+                    <div class="text-sm text-gray-900">{{ cart._id }}</div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">{{ purchase.date | date }}</div>
+                    <div class="text-sm text-gray-900">{{ cart.payment_type.type }}</div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-500">{{ purchase.amount | currency }}</div>
+                    <div class="text-sm text-gray-500">${{ totalAmount}}</div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" 
-                          *ngIf="purchase.shipmentStatus === 'delivered'; else completedTag">
-                      Delivered
+                          *ngIf="cart.state === 'Completed'; else completedTag">
+                      Completado
                     </span>
                     <ng-template #completedTag>
                       <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                        Completed
+                        Pendiente
                       </span>
                     </ng-template>
                   </td>
@@ -51,14 +51,15 @@
                   </td>
                 </tr>
                 <!-- Expanded Row for Product Details -->
-                <tr *ngIf="purchase.expanded">
+                <tr *ngIf="cart.expanded">
                     <td colspan="5" class="bg-gray-100">
                         <div class="p-4">
-                            <div class="font-semibold mb-2">Product Details:</div>
+                            <div class="font-semibold mb-2">Detalles de mis productos:</div>
                                 <ul>
-                                    <li *ngFor="let product of purchase.products">
-                                    <span class="font-medium">{{ product.name }}:</span>
-                                    {{ product.quantity }} x {{ product.price | currency }}
+                                    <li *ngFor="let order of cart.orders">
+                                    <span class="font-medium">Nombre: {{ order.product.name }}, </span>
+                                    <span class="font-medium">Estado: {{ order.state }}, Estado de envío: {{order.shipment.situation}}</span>
+
                                     </li>
                                 </ul>
                         </div>

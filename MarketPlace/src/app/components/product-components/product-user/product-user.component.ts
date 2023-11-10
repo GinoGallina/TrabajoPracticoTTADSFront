@@ -30,7 +30,7 @@ export class ProductUserComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private notificationService: NotificationService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +38,6 @@ export class ProductUserComponent implements OnInit {
     this.productService.getAllProducts().subscribe((res: any) => {
       this.allProductList = res;
       this.filteredProducts = res;
-      console.log(res);
     });
   }
   detalle(id: String) {}
