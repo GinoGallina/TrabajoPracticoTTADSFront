@@ -21,6 +21,7 @@ import { ProductUserComponent } from './components/product-components/product-us
 import { SellerGuard } from './guards/seller.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
+import { CreateOrderComponent } from './components/order-components/create-order/create-order.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,13 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponentComponent,
     canActivate: [LoginGuard],
+  },
+  {
+    path: 'order',
+    canActivate: [AuthGuard, LoginGuard],
+    children: [
+      {path: 'create/:id', component: CreateOrderComponent}
+    ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir la página de inicio a la página de inicio de sesión
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },

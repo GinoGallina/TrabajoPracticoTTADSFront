@@ -1,0 +1,22 @@
+<div class="product-conteiner flex flex-wrap justify-center">
+  <mat-card class="example-card m-4 w-1/4">
+    <mat-card-header class="flex justify-center">
+      <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" />
+    <mat-card-content>
+      <div class="flex flex-col">
+        <p class="text-center">{{ product.description }}</p>
+        <p class="text-center">${{ product.price }}</p>
+        <p class="text-center">Stock: {{ product.stock }}</p>
+        <p class="text-center">Categoria: {{ product.category.category }}</p>
+        <p class="text-center">Seller: {{ product.seller.email }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="flex justify-between">
+      <button mat-button color="success" aria-label="Example icon button with a delete icon">
+        Agregar carrito
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

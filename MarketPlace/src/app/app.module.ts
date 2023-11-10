@@ -45,6 +45,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
 import { CompletedComponent } from './components/cart-components/cart-list/completed/completed.component';
 import { PendingComponent } from './components/cart-components/cart-list/pending/pending.component';
+import { CreateOrderComponent } from './components/order-components/create-order/create-order.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { PendingComponent } from './components/cart-components/cart-list/pending
     CartListComponent,
     CompletedComponent,
     PendingComponent,
+    CreateOrderComponent,
   ],
   imports: [
     BrowserModule,
