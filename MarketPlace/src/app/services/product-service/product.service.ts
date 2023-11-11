@@ -22,7 +22,7 @@ export class ProductService {
     return this.http.post(`${this.API_URL}/products`, data);
   }
   editProduct(id: String, data: any) {
-    return this.http.patch(`${this.API_URL}/products/${id}`, data);
+    return this.http.put(`${this.API_URL}/products/${id}`, data);
   }
   deleteProduct(id: String) {
     return this.http.delete(`${this.API_URL}/products/${id}`);

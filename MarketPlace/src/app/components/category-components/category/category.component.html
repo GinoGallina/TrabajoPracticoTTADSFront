@@ -1,90 +1,93 @@
-<div
-  class="bg-slate-900 min-h-screen flex flex-col items-center justify-center"
->
-  <div
-    class="overflow-x-auto shadow-md bg-grey text-white w-3/4 mx-auto my-2 rounded-md"
-  >
-    <mat-table [dataSource]="CategoryList" class="custom-table">
-      <!-- Category Column -->
-      <ng-container matColumnDef="category" class="mat-grey">
-        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-        <mat-cell *matCellDef="let category">
-          {{ category.category }}
-        </mat-cell>
-      </ng-container>
-
-      <!-- State Column -->
-      <ng-container matColumnDef="state">
-        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
-        <mat-cell *matCellDef="let category"> {{ category.state }} </mat-cell>
-      </ng-container>
-
-      <!-- Edit Column-->
-      <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-        <mat-cell *matCellDef="let category">
-          <button
-            mat-mini-fab
-            color="primary"
-            [routerLink]="['edit', category._id]"
-            aria-label="Example icon button with a delete icon"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-cell> </ng-container
-      >-->
-
-      <!-- Discounts Column -->
-      <ng-container matColumnDef="discounts">
-        <mat-header-cell *matHeaderCellDef> Discounts </mat-header-cell>
-        <mat-cell *matCellDef="let category">
-          <button mat-raised-button color="primary">Discounts</button>
-        </mat-cell>
-      </ng-container>
-
-      <!-- Edit Column -->
-      <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-        <mat-cell *matCellDef="let category">
-          <button
-            mat-mini-fab
-            color="primary"
-            [routerLink]="['edit', category._id]"
-            aria-label="Example icon button with a delete icon"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-      <!-- Delete Column -->
-      <ng-container matColumnDef="delete">
-        <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-        <mat-cell *matCellDef="let category">
-          <button
-            mat-mini-fab
-            color="warn"
-            (click)="onDelete(category._id)"
-            aria-label="Example icon button with a delete icon"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row
-        *matRowDef="let row; columns: displayedColumns"
-        class="hover:bg-gray-700 hover:text-white"
-      ></mat-row>
-    </mat-table>
-    <div>
-      <!-- Create Category Button -->
-      <button
-        class="bg-indigo-500 text-white font-mono font-normal items-center h-10 px-4 rounded-full hover:bg-indigo-600 active:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 mt-4"
-        [routerLink]="'create'"
-      >
-        Create Category
-      </button>
+<div class="container mx-auto p-4">
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Category
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  State
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Created at
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Updated at
+                </th>
+       
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200" >
+              <ng-container *ngFor="let category of CategoryList; let i = index">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ category.category }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-500">{{ category.state}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-500">{{ category.createdAt}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-500">{{ category.updatedAt}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <button (click)="toggleDetails(i)" class="text-indigo-600 hover:text-indigo-900">
+                    Discounts
+                  </button>
+                </td>
+                <td>
+                    <button
+                    mat-mini-fab
+                    color="warn"
+                    (click)="onDelete(category._id)"
+                    aria-label="Example icon button with a delete icon"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    mat-mini-fab
+                    color="primary"
+                    [routerLink]="['edit', category._id]"
+                    aria-label="Example icon button with a delete icon"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="category.expanded">
+                <td colspan="5" class="bg-gray-100 p-4">
+                  <div class="font-semibold mb-2">Discounts:</div>
+                  <div class="overflow-x-auto text-center">
+                    <table class="min-w-full bg-white border">
+                      <thead class="bg-gray-200">
+                        <tr>
+                          <th class="py-1 px-2 text-left">Value</th>
+                          <th class="py-1 px-2 text-left">State</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let discount of category.discounts" class="border">
+                            <td class="py-1 px-2 text-left">{{discount.value}}</td>
+                            <td class="py-1 px-2 text-left">{{discount.state}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

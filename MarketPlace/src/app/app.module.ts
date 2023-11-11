@@ -28,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
@@ -89,7 +90,9 @@ import { CreateOrderComponent } from './components/order-components/create-order
     MatToolbarModule,
     MatListModule,
     FormsModule,
+    MatExpansionModule,
   ],
+
   providers: [
     NotificationService,
     {

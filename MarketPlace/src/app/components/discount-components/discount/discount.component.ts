@@ -2,15 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DiscountService } from 'src/app/services/discount-services/discount.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
-
-interface Discount {
-  _id: Number;
-  value: Number;
-  state: string;
-  createdAt: string;
-  updatedAt: string;
-  category: any;
-}
+import { Discount } from '../../../interfaces/discount';
 @Component({
   selector: 'app-discount',
   templateUrl: './discount.component.html',
@@ -23,7 +15,7 @@ export class DiscountComponent {
   constructor(
     private discountService: DiscountService,
     private notificationService: NotificationService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -40,9 +32,9 @@ export class DiscountComponent {
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Failed to delete discount',
+          'Failed to delete discount'
         );
-      },
+      }
     );
   }
 }

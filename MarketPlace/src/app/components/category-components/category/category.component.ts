@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../../../services/category-services/category.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
-
+import { Discount } from '../../../interfaces/discount';
 interface Category {
   _id: Number;
   category: string;
+  discounts: Discount[];
   state: string;
   createdAt: string;
   updatedAt: string;
+  expanded: boolean;
   __v: number;
 }
 
@@ -19,8 +21,9 @@ interface Category {
 export class CategoryComponent {
   constructor(
     private categoryService: CategoryService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {}
+  panelOpenState = false;
   CategoryList: Category[] = [];
 
   ngOnInit(): void {
@@ -38,10 +41,15 @@ export class CategoryComponent {
       },
       (error) => {
         this.notificationService.showErrorNotification(
-          'Ocurrió un error eliminado la categoria',
+          'Ocurrió un error eliminado la categoria'
         );
-      },
+      }
     );
+  }
+  showAdditionalTable = false;
+
+  toggleDetails(index: number): void {
+    this.CategoryList[index].expanded = !this.CategoryList[index].expanded;
   }
 
   displayedColumns: string[] = [
