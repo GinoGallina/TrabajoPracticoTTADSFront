@@ -40,7 +40,6 @@ export class ProductUserComponent implements OnInit {
       this.filteredProducts = res;
     });
   }
-  detalle(id: String) {}
 
   filterProducts() {
     const query = this.searchQuery.toLowerCase();
