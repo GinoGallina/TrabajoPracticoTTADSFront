@@ -77,8 +77,10 @@ const routes: Routes = [
   },
   {
     path: 'order',
-    canActivate: [AuthGuard, LoginGuard],
-    children: [{ path: 'create/:id', component: CreateOrderComponent }],
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'create/:id', component: CreateOrderComponent }
+    ],
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir la página de inicio a la página de inicio de sesión
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
