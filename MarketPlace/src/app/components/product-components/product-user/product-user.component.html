@@ -46,17 +46,10 @@
         <button
           mat-button
           color="primary"
-          (click)="detalle(product._id)"
+          [routerLink] ="['/order/create', product._id]"
           aria-label="Example icon button with a delete icon"
         >
           Ver Detalle
-        </button>
-        <button
-          mat-button
-          color="success"
-          aria-label="Example icon button with a delete icon"
-        >
-          Agregar carrito
         </button>
       </mat-card-actions>
     </mat-card>
