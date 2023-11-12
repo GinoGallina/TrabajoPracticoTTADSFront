@@ -16,7 +16,6 @@ export class CompletedComponent {
   ngOnInit(): void {
     this.cartService.getCart('Completed').subscribe((res: any) => {
       this.cartList = res;
-      console.log(this.cartList);
       this.totalItems = this.cartList[0].orders.length;
       this.totalAmount = this.cartList[0].orders.reduce(
         (total, item) => total + item.amount * item.quantity,

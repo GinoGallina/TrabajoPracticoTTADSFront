@@ -31,7 +31,6 @@ export class PendingComponent {
 
     this.paymentTypeService.getPaymentTypes().subscribe((res: any) => {
       this.paymentTypes = res;
-      console.log(this.paymentTypes);
     });
   }
 }
