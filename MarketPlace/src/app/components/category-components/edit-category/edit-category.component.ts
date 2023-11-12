@@ -10,14 +10,14 @@ import { NotificationService } from '../../../services/notification-services/not
   styleUrls: ['./edit-category.component.css'],
 })
 export class EditCategoryComponent implements OnInit {
-  categoryId!: number;
+  categoryId!: String;
   categoryFormEdit!: FormGroup;
 
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -52,9 +52,9 @@ export class EditCategoryComponent implements OnInit {
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            'No se pudo editar la categoria',
+            'No se pudo editar la categoria'
           );
-        },
+        }
       );
     } else {
       console.log('Invalid form data');

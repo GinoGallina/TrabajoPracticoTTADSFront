@@ -6,23 +6,6 @@
       <mat-card-content class="p-6">
         <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
           <div class="mb-4">
-            <mat-form-field class="w-full">
-              <mat-label>Seller</mat-label>
-              <input
-                matInput
-                formControlName="seller"
-                placeholder="Enter your id"
-              />
-            </mat-form-field>
-
-            <mat-form-field class="w-full">
-              <mat-label>Category</mat-label>
-              <input
-                matInput
-                formControlName="category"
-                placeholder="Enter your category"
-              />
-            </mat-form-field>
 
             <mat-form-field class="w-full">
               <mat-label>Name</mat-label>
@@ -39,8 +22,19 @@
             </mat-form-field>
 
             <mat-form-field class="w-full">
+              <mat-label>Choose category</mat-label>
+              <mat-select formControlName="category">
+                <ng-container *ngFor="let category of categories">
+                  <mat-option  [value]="category._id">{{ category.category }}</mat-option>
+                </ng-container> 
+              </mat-select>
+            </mat-form-field>
+            
+
+            <mat-form-field class="w-full">
               <mat-label>Price</mat-label>
               <input
+                type="number"
                 matInput
                 formControlName="price"
                 placeholder="Enter product price"
@@ -49,6 +43,7 @@
             <mat-form-field class="w-full">
               <mat-label>Stock</mat-label>
               <input
+                type="number"
                 matInput
                 formControlName="stock"
                 placeholder="Enter product stock"

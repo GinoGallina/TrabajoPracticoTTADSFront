@@ -1,17 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../../../services/category-services/category.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
-import { Discount } from '../../../interfaces/discount';
-interface Category {
-  _id: Number;
-  category: string;
-  discounts: Discount[];
-  state: string;
-  createdAt: string;
-  updatedAt: string;
-  expanded: boolean;
-  __v: number;
-}
+import { Category } from 'src/app/interfaces/category.js';
 
 @Component({
   selector: 'app-category',
@@ -32,7 +22,7 @@ export class CategoryComponent {
     });
   }
 
-  onDelete(id: Number) {
+  onDelete(id: String) {
     this.categoryService.deleteCategory(id).subscribe(
       (res: any) => {
         // Filter out the deleted category from the CategoryList array
@@ -52,11 +42,5 @@ export class CategoryComponent {
     this.CategoryList[index].expanded = !this.CategoryList[index].expanded;
   }
 
-  displayedColumns: string[] = [
-    'category',
-    'state',
-    'discounts',
-    'edit',
-    'delete',
-  ];
+  displayedColumns: string[] = ['value', 'state'];
 }

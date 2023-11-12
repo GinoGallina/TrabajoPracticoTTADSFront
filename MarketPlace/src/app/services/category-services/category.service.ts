@@ -11,16 +11,16 @@ export class CategoryService {
   getCategories() {
     return this.http.get(`${this.API_URL}/category`);
   }
-  getOneCategory(id: Number) {
+  getOneCategory(id: String) {
     return this.http.get(`${this.API_URL}/category/${id}`);
   }
   createCategory(data: any) {
     return this.http.post(`${this.API_URL}/category`, data);
   }
-  editCategory(id: Number, data: any) {
+  editCategory(id: String, data: any) {
     return this.http.patch(`${this.API_URL}/category/${id}`, data);
   }
-  deleteCategory(id: Number) {
+  deleteCategory(id: String) {
     return this.http.delete(`${this.API_URL}/category/${id}`);
   }
 }
