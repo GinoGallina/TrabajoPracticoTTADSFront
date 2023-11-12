@@ -38,10 +38,10 @@
                   <div class="text-sm text-gray-500">{{ category.state}}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-500">{{ category.createdAt}}</div>
+                  <div class="text-sm text-gray-500">{{ category.createdAt | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-500">{{ category.updatedAt}}</div>
+                  <div class="text-sm text-gray-500">{{ category.updatedAt | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button (click)="toggleDetails(i)" class="text-indigo-600 hover:text-indigo-900">
@@ -78,12 +78,14 @@
                         <tr>
                           <th class="py-1 px-2 text-left">Value</th>
                           <th class="py-1 px-2 text-left">State</th>
+                          <th class="py-1 px-2 text-left">Create at</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let discount of category.discounts" class="border">
                             <td class="py-1 px-2 text-left">{{discount.value}}</td>
-                            <td class="py-1 px-2 text-left">{{discount.state}}</td>
+                            <td class="py-1 px-2 text-left">Active</td>
+                            <td class="py-1 px-2 text-left" >{{ discount.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
                         </tr>
                       </tbody>
                     </table>

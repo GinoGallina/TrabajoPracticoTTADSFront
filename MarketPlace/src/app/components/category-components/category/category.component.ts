@@ -41,6 +41,4 @@ export class CategoryComponent {
   toggleDetails(index: number): void {
     this.CategoryList[index].expanded = !this.CategoryList[index].expanded;
   }
-
-  displayedColumns: string[] = ['value', 'state'];
 }
