@@ -11,3 +11,7 @@
 .card-hover-effect:hover {
   transform: scale(1.05);
 }
+
+.cartContainer{
+  display: inline-block;
+}

@@ -55,7 +55,7 @@ export class CreateProductComponent {
           this.notificationService.showSuccessNotification(
             'product created successfully'
           );
-          this.router.navigate(['/products']);
+          this.router.navigate(['/productsSeller']);
         },
         (error) => {
           this.notificationService.showErrorNotification(

@@ -65,7 +65,7 @@ export class EditProductComponent implements OnInit {
       this.productService.editProduct(this.productId, formData).subscribe(
         (res: any) => {
           this.notificationService.showSuccessNotification('product updated');
-          this.router.navigate(['/products']);
+          this.router.navigate(['/productsSeller']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
