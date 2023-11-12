@@ -84,7 +84,7 @@
                       <tbody>
                         <tr *ngFor="let discount of category.discounts" class="border">
                             <td class="py-1 px-2 text-left">{{discount.value}}</td>
-                            <td class="py-1 px-2 text-left">Active</td>
+                            <td class="py-1 px-2 text-left">{{discount.state}}</td>
                             <td class="py-1 px-2 text-left" >{{ discount.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
                         </tr>
                       </tbody>

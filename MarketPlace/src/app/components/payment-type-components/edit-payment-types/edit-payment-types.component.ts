@@ -17,24 +17,22 @@ export class EditPaymentTypesComponent {
     private paymentTypeService: PaymentTypeService,
     private route: ActivatedRoute,
     private router: Router,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
     this.paymentTypeId = this.route.snapshot.params['id'];
 
-    // Initialize the form group with form controls and validators
     this.paymentTypeFormEdit = new FormGroup({
       type: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
     });
 
-    // Fetch the paymentType data for editing
     this.paymentTypeService
       .getOnePaymentType(this.paymentTypeId)
       .subscribe((paymentType: any) => {
         this.paymentTypeFormEdit.setValue({
-          paymentType: paymentType.type,
+          type: paymentType.type,
           state: paymentType.state,
         });
       });
@@ -48,17 +46,16 @@ export class EditPaymentTypesComponent {
         .editPaymentType(this.paymentTypeId, formData)
         .subscribe(
           (response) => {
-            console.log('paymentType updated successfully:', response);
             this.notificationService.showSuccessNotification(
-              'Payment Type editada',
+              'Payment Type editada'
             );
             this.router.navigate(['/payment_type']);
           },
           (error) => {
             this.notificationService.showErrorNotification(
-              'No se pudo editar la Payment Type',
+              'No se pudo editar la Payment Type'
             );
-          },
+          }
         );
     } else {
       console.log('Invalid form data');
