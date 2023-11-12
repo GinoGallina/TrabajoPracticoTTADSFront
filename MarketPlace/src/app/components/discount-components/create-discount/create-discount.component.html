@@ -9,11 +9,31 @@
             <mat-form-field class="w-full">
               <mat-label>Value</mat-label>
               <input
+                type="number"
                 matInput
                 formControlName="value"
                 placeholder="Enter value"
               />
             </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Choose category</mat-label>
+              <mat-select formControlName="category">
+                <ng-container *ngFor="let category of categories">
+                  <mat-option  [value]="category._id">{{ category.category }}</mat-option>
+                </ng-container> 
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Edit Status</mat-label>
+              <mat-select formControlName="state">
+                <mat-option value="Active">Active</mat-option>
+                <mat-option value="Archived">Archived</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
           </div>
           <div class="mb-4">
             <div class="flex justify-center">

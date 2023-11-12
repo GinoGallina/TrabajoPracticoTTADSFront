@@ -10,7 +10,7 @@ import { Discount } from '../../../interfaces/discount';
 })
 export class DiscountComponent {
   DiscountList: Discount[] = [];
-  displayedColumns: string[] = ['value', 'state', 'edit', 'delete'];
+  displayedColumns: string[] = ['value', 'state', 'category', 'edit', 'delete'];
 
   constructor(
     private discountService: DiscountService,

@@ -18,7 +18,7 @@ export class LoginComponentComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private loginServices: LoginService,
-    private notificationService: NotificationService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -33,20 +33,19 @@ export class LoginComponentComponent {
       this.loginServices.login(this.loginForm.value).subscribe(
         (res: any) => {
           this.notificationService.showSuccessNotification(
-            'Inicio de sesión exitoso! ',
+            'Inicio de sesión exitoso! '
           );
           localStorage.setItem('token', res);
           this.router.navigate(['/home']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            `Login Error: Email o contraseña incorrectos!`,
+            `Login Error: Email o contraseña incorrectos!`
           );
-        },
+        }
       );
     } else {
-      // Form is invalid, show validation errors to the user
-      // You can use the Angular Material form field's error state to display errors
+      console.log('Invalid from data');
     }
   }
 }

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/interfaces/category.js';
+import { CategoryService } from 'src/app/services/category-services/category.service';
 import { DiscountService } from 'src/app/services/discount-services/discount.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 
@@ -11,20 +18,27 @@ import { NotificationService } from 'src/app/services/notification-services/noti
 })
 export class CreateDiscountComponent implements OnInit {
   discountForm!: FormGroup;
-
+  categories!: Category[];
   constructor(
     private discountService: DiscountService,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService,
     private router: Router,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
     this.discountForm = this.formBuilder.group({
-      value: [
-        '',
-        [Validators.required, Validators.min(1), Validators.max(100)],
-      ],
+      value: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(100),
+      ]),
+      state: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required]),
+    });
+    this.categoryService.getCategories().subscribe((res: any) => {
+      this.categories = res;
     });
   }
 
@@ -33,19 +47,18 @@ export class CreateDiscountComponent implements OnInit {
       this.discountService.createDiscount(this.discountForm.value).subscribe(
         (res: any) => {
           this.notificationService.showSuccessNotification(
-            'Discount created successfully',
+            'Discount created successfully'
           );
           this.router.navigate(['/discount']);
         },
         (error) => {
           this.notificationService.showErrorNotification(
-            `Failed to create discount${error.error.message}`,
+            `Failed to create discount${error.error.message}`
           );
-        },
+        }
       );
     } else {
-      // Form is invalid, show validation errors to the user
-      // You can use the Angular Material form field's error state to display errors
+      console.log('Invalid from data');
     }
   }
 }

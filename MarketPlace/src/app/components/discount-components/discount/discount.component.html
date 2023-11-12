@@ -5,19 +5,21 @@
     class="overflow-x-auto shadow-md bg-grey text-white w-3/4 mx-auto my-2 rounded-md"
   >
     <mat-table [dataSource]="DiscountList" class="custom-table">
-      <!-- Value Column -->
       <ng-container matColumnDef="value" class="mat-grey">
         <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
         <mat-cell *matCellDef="let discount"> {{ discount.value }} </mat-cell>
       </ng-container>
 
-      <!-- State Column -->
       <ng-container matColumnDef="state">
         <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
         <mat-cell *matCellDef="let discount"> {{ discount.state }} </mat-cell>
       </ng-container>
 
-      <!-- Edit Column -->
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell *matCellDef="let discount"> {{ discount.category.category }} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
         <mat-cell *matCellDef="let discount">

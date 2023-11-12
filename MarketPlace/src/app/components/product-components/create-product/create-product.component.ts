@@ -64,8 +64,7 @@ export class CreateProductComponent {
         }
       );
     } else {
-      // Form is invalid, show validation errors to the user
-      // You can use the Angular Material form field's error state to display errors
+      console.log('Invalid from data');
     }
   }
 }
