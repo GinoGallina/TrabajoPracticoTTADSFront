@@ -3,8 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 import { ProductService } from 'src/app/services/product-service/product.service';
-import { CategoryComponent } from '../../category-components/category/category.component.js';
-
+import { AuthService } from 'src/app/services/auth-services/auth.service';
+import { CategoryService } from 'src/app/services/category-services/category.service';
+import { Category } from 'src/app/interfaces/category';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -13,29 +14,31 @@ import { CategoryComponent } from '../../category-components/category/category.c
 export class EditProductComponent implements OnInit {
   productId!: String;
   productFormEdit!: FormGroup;
-
+  seller!: String;
+  categories!: Category[];
   constructor(
+    private authService: AuthService,
     private productService: ProductService,
     private route: ActivatedRoute,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private categoryService: CategoryService
   ) {}
   ngOnInit() {
     this.productId = this.route.snapshot.params['id'];
+    this.seller = this.authService.getUser()._id;
 
     // Initialize the form group with form controls and validators
     this.productFormEdit = new FormGroup({
-      // seller: new FormControl('', [Validators.required]),
+      seller: new FormControl(this.seller, [Validators.required]),
       id: new FormControl('', Validators.required),
       price: new FormControl('', [Validators.required, Validators.min(0)]),
       stock: new FormControl('', [Validators.required, Validators.min(0)]),
       state: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      category: new FormGroup({
-        id: new FormControl('', [Validators.required]),
-        category: new FormControl('', [Validators.required]),
-      }),
+      category: new FormControl('', [Validators.required]),
+      img: new FormControl('', [Validators.required]),
     });
 
     // Fetch the product data for editing
@@ -45,21 +48,16 @@ export class EditProductComponent implements OnInit {
         this.productFormEdit.patchValue({
           id: product._id,
           stock: product.stock,
-          // seller: product.seller,
           name: product.name,
           description: product.description,
-          category: product.category,
+          category: product.category._id,
           price: product.price,
           state: product.state,
         });
-        const categoryControl = this.productFormEdit.get('category');
-        if (categoryControl) {
-          categoryControl.patchValue({
-            id: product.category._id,
-            category: product.category.category,
-          });
-        }
       });
+    this.categoryService.getCategories().subscribe((res: any) => {
+      this.categories = res;
+    });
   }
 
   onSubmit() {

@@ -7,9 +7,10 @@
     <mat-card>
       <mat-card-content class="p-6">
         <form [formGroup]="productFormEdit" (ngSubmit)="onSubmit()">
+          
           <mat-form-field class="w-full">
-            <mat-label>Edit price</mat-label>
-            <input matInput formControlName="price" />
+            <mat-label>Edit name</mat-label>
+            <input matInput formControlName="name" />
           </mat-form-field>
 
           <mat-form-field class="w-full">
@@ -18,21 +19,25 @@
           </mat-form-field>
 
           <mat-form-field class="w-full">
-            <mat-label>Edit name</mat-label>
-            <input matInput formControlName="name" />
+            <mat-label>Choose category</mat-label>
+            <mat-select formControlName="category">
+              <ng-container *ngFor="let category of categories">
+                <mat-option  [value]="category._id">{{ category.category }}</mat-option>
+              </ng-container> 
+            </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="w-full" formGroupName="category">
-            <mat-label>Edit category</mat-label>
-            <input matInput formControlName="category" />
+          <mat-form-field class="w-full">
+            <mat-label>Edit price</mat-label>
+            <input type="number" matInput formControlName="price" />
           </mat-form-field>
 
           <mat-form-field class="w-full">
             <mat-label>Edit stock</mat-label>
-            <input matInput formControlName="stock" />
+            <input type="number" matInput formControlName="stock" />
           </mat-form-field>
 
-          <!-- Replace the input with a mat-select -->
+          
           <mat-form-field class="w-full">
             <mat-label>Edit State</mat-label>
             <mat-select formControlName="state">
@@ -41,7 +46,10 @@
             </mat-select>
           </mat-form-field>
 
-          <!-- Angular Material Button -->
+          <mat-form-field class="w-full">
+            <mat-label>Edit image</mat-label>
+            <input matInput formControlName="img" />
+          </mat-form-field>
           <button mat-raised-button color="primary" type="submit">
             Editar
           </button>
