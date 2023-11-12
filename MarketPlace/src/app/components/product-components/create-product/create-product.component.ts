@@ -46,7 +46,6 @@ export class CreateProductComponent {
     this.categoryService.getCategories().subscribe((res: any) => {
       this.categories = res;
     });
-    console.log(this.categories);
   }
 
   onSubmit() {
@@ -56,7 +55,7 @@ export class CreateProductComponent {
           this.notificationService.showSuccessNotification(
             'product created successfully'
           );
-          this.router.navigate(['/product']);
+          this.router.navigate(['/products']);
         },
         (error) => {
           this.notificationService.showErrorNotification(

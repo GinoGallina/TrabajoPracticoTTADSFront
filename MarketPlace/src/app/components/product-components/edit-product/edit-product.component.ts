@@ -28,7 +28,6 @@ export class EditProductComponent implements OnInit {
     this.productId = this.route.snapshot.params['id'];
     this.seller = this.authService.getUser()._id;
 
-    // Initialize the form group with form controls and validators
     this.productFormEdit = new FormGroup({
       seller: new FormControl(this.seller, [Validators.required]),
       id: new FormControl('', Validators.required),
@@ -41,7 +40,6 @@ export class EditProductComponent implements OnInit {
       img: new FormControl('', [Validators.required]),
     });
 
-    // Fetch the product data for editing
     this.productService
       .getOneProduct(this.productId)
       .subscribe((product: any) => {
@@ -53,6 +51,7 @@ export class EditProductComponent implements OnInit {
           category: product.category._id,
           price: product.price,
           state: product.state,
+          img: product.img,
         });
       });
     this.categoryService.getCategories().subscribe((res: any) => {
@@ -66,7 +65,7 @@ export class EditProductComponent implements OnInit {
       this.productService.editProduct(this.productId, formData).subscribe(
         (res: any) => {
           this.notificationService.showSuccessNotification('product updated');
-          this.router.navigate(['/product']);
+          this.router.navigate(['/products']);
         },
         (error) => {
           this.notificationService.showErrorNotification(

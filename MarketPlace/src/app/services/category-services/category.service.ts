@@ -18,7 +18,7 @@ export class CategoryService {
     return this.http.post(`${this.API_URL}/category`, data);
   }
   editCategory(id: String, data: any) {
-    return this.http.patch(`${this.API_URL}/category/${id}`, data);
+    return this.http.put(`${this.API_URL}/category/${id}`, data);
   }
   deleteCategory(id: String) {
     return this.http.delete(`${this.API_URL}/category/${id}`);
