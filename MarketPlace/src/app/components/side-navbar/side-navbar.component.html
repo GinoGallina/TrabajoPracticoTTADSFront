@@ -22,12 +22,12 @@
         <a mat-list-item routerLink="/category">Categorias</a>
         <a mat-list-item routerLink="/payment_type">Tipo de Pago</a>
         <a mat-list-item routerLink="/discount">Descuentos</a>
-        <a mat-list-item routerLink="/">Usuarios</a>
+        <a mat-list-item routerLink="/users">Usuarios</a>
       </div>
       <a *ngIf="isSeller" mat-list-item routerLink="/productsSeller"
         >Mis Productos</a
       >
-      <a *ngIf="isSeller || isUser" mat-list-item routerLink="/products"
+      <a  mat-list-item routerLink="/products" [ngStyle]="{ 'backgroundcolor' : currentUrl == '/products' ? 'blue':'' }"
         >Productos</a
       >
       <a *ngIf="isSeller || isUser" mat-list-item routerLink="/cart"

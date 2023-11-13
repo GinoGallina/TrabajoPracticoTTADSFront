@@ -1,0 +1,150 @@
+<div
+  class="bg-slate-900 min-h-screen flex flex-col items-center justify-center"
+>
+
+  <div class="max-w-md w-full sm:p-6 mx-auto">
+    <div class="text-center">
+        <mat-button-toggle-group  [(ngModel)]="selectedOption" class="bg-gray-200 p-2 rounded-full mb-3" (change)="toggleUserSeller()" >
+            <mat-button-toggle value="user" class="px-4 py-2">User</mat-button-toggle>
+            <mat-button-toggle value="seller" class="px-4 py-2">Seller</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+
+    <h1 class="text-white text-center mt-3">Create {{isCreatingUser ? 'User':'Seller'}}</h1>
+    <mat-card>
+      <mat-card-content class="p-6">
+
+        <form *ngIf="isCreatingUser" [formGroup]="userForm" (ngSubmit)="createUser()">
+          <div class="mb-4">
+
+            <mat-form-field class="w-full">
+              <mat-label>Username</mat-label>
+              <input
+                matInput
+                formControlName="username"
+                placeholder="Enter your username"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Enter your payment email"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                formControlName="password"
+                placeholder="Enter your password"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Address</mat-label>
+              <input
+                matInput
+                formControlName="address"
+                placeholder="Enter your payment address"
+              />
+            </mat-form-field>
+
+
+
+          </div>
+          <div class="flex justify-center">
+            <button mat-raised-button color="primary" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+
+
+        <form *ngIf="!isCreatingUser" [formGroup]="sellerForm" (ngSubmit)="createSeller()">
+          <div class="mb-4">
+
+            <mat-form-field class="w-full">
+              <mat-label>Username</mat-label>
+              <input
+                matInput
+                formControlName="username"
+                placeholder="Enter your username"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Enter your email"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                formControlName="password"
+                placeholder="Enter your password"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Address</mat-label>
+              <input
+                matInput
+                formControlName="address"
+                placeholder="Enter your address"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>CBU</mat-label>
+                <input
+                matInput
+                formControlName="cbu"
+                placeholder="Enter your cbu"
+                />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Shop Name</mat-label>
+                <input
+                matInput
+                formControlName="shop_name"
+                placeholder="Enter your shop_name"
+                />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>CUIT</mat-label>
+                <input
+                matInput
+                formControlName="cuit"
+                placeholder="Enter your cuit"
+                />
+            </mat-form-field> 
+
+
+
+          </div>
+          <div class="flex justify-center">
+            <button mat-raised-button color="primary" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+

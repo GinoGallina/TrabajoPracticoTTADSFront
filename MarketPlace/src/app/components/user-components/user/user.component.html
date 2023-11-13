@@ -1,0 +1,117 @@
+<div
+  class="bg-slate-900 min-h-screen flex flex-col items-center justify-center"
+>
+  <div
+    class="overflow-x-auto shadow-md bg-grey text-white w-3/4 mx-auto my-2 rounded-md"
+  >
+    <h1 class="text-4xl font-bold text-center ">Users List</h1>
+
+
+
+    <mat-table [dataSource]="filteredUsersList" class="custom-table">
+      <!-- Category Column -->
+      <ng-container matColumnDef="username" class="mat-grey">
+        <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          {{ user.username }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          {{ user.email }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          {{ user.type }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          {{ user.address }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          {{ user.state }}
+        </mat-cell>
+      </ng-container>
+
+      <!-- Edit Column -->
+      <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <button
+            mat-mini-fab
+            color="primary"
+            [routerLink]="['edit', user._id]"
+            aria-label="Example icon button with a delete icon"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef> Option </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <button *ngIf="user.state === 'Active'"
+            mat-mini-fab
+            color="warn"
+            (click)="onDelete(user._id)"
+            aria-label="Example icon button with a delete icon"
+          >
+            
+            <mat-icon>delete</mat-icon>
+
+          </button>
+
+          <button *ngIf="user.state === 'Disable'"
+            mat-mini-fab
+            color="accent"
+            (click)="onActivate(user._id)"
+            aria-label="Example icon button with a delete icon"
+          >
+            
+            <mat-icon >check_circle</mat-icon>
+
+          </button>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        [ngClass]="{'fondo': isUserDisableState(row) }"
+        class="hover:bg-gray-700 hover:text-white "
+      ></mat-row>
+    </mat-table>
+
+    <div class="mt-4 space-x-full" style="display: flex; justify-content: space-between">
+      <!-- Create Category Button -->
+      <button
+        class="bg-indigo-500 text-white font-mono font-normal items-center h-10 px-4 rounded-full hover:bg-indigo-600 active:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 mt-4"
+        [routerLink]="'create'"
+      >
+        Create User
+      </button>
+
+      <mat-button-toggle-group [(ngModel)]="toggleValue" class="bg-gray-200 p-2 rounded-full" (change)="onToggleChange()">
+        <mat-button-toggle value="active" class="px-4 py-2">Active</mat-button-toggle>
+          <mat-button-toggle value="all" class="px-4 py-2">All</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+  </div>
+</div>

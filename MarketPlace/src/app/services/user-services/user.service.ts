@@ -12,6 +12,9 @@ export class UserService {
     const params = new HttpParams().set('seller', seller);
     return this.http.get(`${this.API_URL}/user`, { params });
   }
+  getAllUsers() {
+    return this.http.get(`${this.API_URL}/user`);
+  }
   getOneUser(id: String) {
     return this.http.get(`${this.API_URL}/user/${id}`);
   }
@@ -19,9 +22,13 @@ export class UserService {
     return this.http.post(`${this.API_URL}/user`, data);
   }
   editUser(id: String, data: any) {
-    return this.http.patch(`${this.API_URL}/user/${id}`, data);
+    return this.http.put(`${this.API_URL}/user/${id}`, data);
   }
   deleteUser(id: String) {
     return this.http.delete(`${this.API_URL}/user/${id}`);
+  }
+
+  activateUser(id: String) {
+    return this.http.put(`${this.API_URL}/user/activate/${id}`,null);
   }
 }

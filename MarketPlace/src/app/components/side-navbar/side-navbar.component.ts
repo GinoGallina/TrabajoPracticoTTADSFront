@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { ActivatedRoute } from '@angular/router';
 import { filter, first } from 'rxjs';
 import { AuthService } from 'src/app/services/auth-services/auth.service';
 
@@ -13,8 +14,12 @@ export class SideNavbarComponent implements OnInit {
   isSeller: boolean = false;
   isUser: boolean = false;
   showOptions: boolean = false;
+  currentUrl:string|undefined;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private route: ActivatedRoute) {
+    this.currentUrl = this.route.snapshot.routeConfig?.path;
+    console.log(this.currentUrl)
+  }
 
   async ngOnInit() {
     const user = await this.waitForUsername();

@@ -1,3 +1,5 @@
+import { User } from "./user.js"; 
+
 export interface CartItem {
   expanded: boolean;
   _id: string;
@@ -8,16 +10,7 @@ export interface CartItem {
   id: string;
 }
 
-interface User {
-  _id: string;
-  username: string;
-  email: string;
-  type: string;
-  password: string;
-  address: string;
-  state: string;
-  __v: number;
-}
+
 
 interface PaymentType {
   state: string;

@@ -22,6 +22,9 @@ import { SellerGuard } from './guards/seller.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
 import { CreateOrderComponent } from './components/order-components/create-order/create-order.component';
+import { UserComponent } from './components/user-components/user/user.component';
+import { CreateUserComponent } from './components/user-components/create-user/create-user.component';
+import { EditUserComponent } from './components/user-components/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -49,6 +52,15 @@ const routes: Routes = [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
       { path: 'edit/:id', component: EditDiscountComponent },
+    ],
+  },
+  {
+    path: 'users',
+    canActivate: [AuthGuard, AdminGuard],
+    children: [
+      { path: '', component:  UserComponent},
+      { path: 'create', component: CreateUserComponent },
+      { path: 'edit/:id', component: EditUserComponent },
     ],
   },
   {

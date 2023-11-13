@@ -29,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
@@ -47,6 +48,9 @@ import { CartListComponent } from './components/cart-components/cart-list/cart-l
 import { CompletedComponent } from './components/cart-components/cart-list/completed/completed.component';
 import { PendingComponent } from './components/cart-components/cart-list/pending/pending.component';
 import { CreateOrderComponent } from './components/order-components/create-order/create-order.component';
+import { UserComponent } from './components/user-components/user/user.component';
+import { EditUserComponent } from './components/user-components/edit-user/edit-user.component';
+import { CreateUserComponent } from './components/user-components/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +75,9 @@ import { CreateOrderComponent } from './components/order-components/create-order
     CompletedComponent,
     PendingComponent,
     CreateOrderComponent,
+    UserComponent,
+    EditUserComponent,
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +98,7 @@ import { CreateOrderComponent } from './components/order-components/create-order
     MatListModule,
     FormsModule,
     MatExpansionModule,
+    MatButtonToggleModule,
   ],
 
   providers: [
