@@ -17,6 +17,7 @@ import { ProductUserComponent } from './components/product-components/product-us
 
 //Providers
 import { NotificationService } from './services/notification-services/notification.service';
+import { AuthModule } from '@auth0/auth0-angular';
 
 //Angular Material
 import { MatTableModule } from '@angular/material/table';
@@ -47,6 +48,7 @@ import { CartListComponent } from './components/cart-components/cart-list/cart-l
 import { CompletedComponent } from './components/cart-components/cart-list/completed/completed.component';
 import { PendingComponent } from './components/cart-components/cart-list/pending/pending.component';
 import { CreateOrderComponent } from './components/order-components/create-order/create-order.component';
+import { Auth0LoginComponent } from './components/auth0-login/auth0-login.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,7 @@ import { CreateOrderComponent } from './components/order-components/create-order
     CompletedComponent,
     PendingComponent,
     CreateOrderComponent,
+    Auth0LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,14 @@ import { CreateOrderComponent } from './components/order-components/create-order
     MatListModule,
     FormsModule,
     MatExpansionModule,
+    AuthModule.forRoot({
+      domain: 'dev-tcfvh3e567jy3y1h.us.auth0.com',
+      clientId: 'eVWIDh0LBBUULeyFh3s11UuE1F5ENdiK',
+      authorizationParams: {
+        redirect_uri: window.location.origin + '/login',
+        scope: 'openid profile email',
+      },
+    }),
   ],
 
   providers: [
