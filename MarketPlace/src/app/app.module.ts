@@ -96,7 +96,7 @@ import { Auth0LoginComponent } from './components/auth0-login/auth0-login.compon
     MatExpansionModule,
     AuthModule.forRoot({
       domain: 'dev-tcfvh3e567jy3y1h.us.auth0.com',
-      clientId: 'eVWIDh0LBBUULeyFh3s11UuE1F5ENdiK',
+      clientId: 'OFqfYecCVJgfkFPtZd3Pd6UuaAFWRk2y',
       authorizationParams: {
         redirect_uri: window.location.origin + '/login',
         scope: 'openid profile email',

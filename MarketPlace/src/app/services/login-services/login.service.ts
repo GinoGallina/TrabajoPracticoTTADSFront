@@ -11,10 +11,14 @@ export class LoginService {
 
   constructor(public auth: AuthService, private http: HttpClient) {}
 
+  loginWithAuth(token: any) {
+    console.log(token);
+    return this.http.post(`${this.API_URL}/login//authO`, { id_token: token });
+  }
+
   login(user: Login) {
     return this.http.post(`${this.API_URL}/login`, user);
   }
-
 
   logout() {
     this.auth.logout();
