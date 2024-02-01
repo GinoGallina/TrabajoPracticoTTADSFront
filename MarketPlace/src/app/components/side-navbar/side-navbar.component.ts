@@ -34,7 +34,7 @@ export class SideNavbarComponent implements OnInit {
           // Filtrar valores nulos o undefined
           filter((user) => user !== null && user !== undefined),
           // Tomar el primer valor que cumpla con el filtro
-          first(),
+          first()
         )
         .subscribe((user) => {
           resolve(user);
