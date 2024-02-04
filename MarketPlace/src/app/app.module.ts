@@ -49,6 +49,7 @@ import { CompletedComponent } from './components/cart-components/cart-list/compl
 import { PendingComponent } from './components/cart-components/cart-list/pending/pending.component';
 import { CreateOrderComponent } from './components/order-components/create-order/create-order.component';
 import { Auth0LoginComponent } from './components/auth0-login/auth0-login.component';
+import { CreateReviewComponent } from './components/review/create-review/create-review.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { Auth0LoginComponent } from './components/auth0-login/auth0-login.compon
     PendingComponent,
     CreateOrderComponent,
     Auth0LoginComponent,
+    CreateReviewComponent,
   ],
   imports: [
     BrowserModule,

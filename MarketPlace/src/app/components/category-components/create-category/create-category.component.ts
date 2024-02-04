@@ -21,7 +21,7 @@ export class CreateCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
-      category: ['', [Validators.required, Validators.maxLength(50)]],
+      category: ['', [Validators.required, Validators.maxLength(150)]],
     });
   }
   onSubmit() {
