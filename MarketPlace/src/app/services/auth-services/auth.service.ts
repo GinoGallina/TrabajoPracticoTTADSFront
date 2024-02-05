@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap, of, map, catchError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService as Auth0Service } from '@auth0/auth0-angular';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,11 @@ export class AuthService {
   private userSubject = new BehaviorSubject<string | null>(null);
   user$ = this.userSubject.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    public auth: Auth0Service
+  ) {}
 
   isTokenValid(): Observable<boolean> {
     try {
@@ -47,6 +52,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    this.auth.logout();
     this.router.navigate(['/login']);
   }
 
