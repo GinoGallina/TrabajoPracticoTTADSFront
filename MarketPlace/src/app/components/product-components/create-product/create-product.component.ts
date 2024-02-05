@@ -31,7 +31,10 @@ export class CreateProductComponent {
   ) {}
 
   ngOnInit(): void {
-    this.seller = this.authService.getUser()._id;
+      const token = this.authService.getToken()
+    if(token){
+      this.seller = this.authService.getUser(token)._id;
+    }
     this.productForm = this.formBuilder.group({
       seller: new FormControl(this.seller, [Validators.required]),
       price: new FormControl('', [Validators.required, Validators.min(0)]),

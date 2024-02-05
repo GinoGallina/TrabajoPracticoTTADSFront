@@ -23,7 +23,11 @@ export class CreateOrderComponent implements OnInit {
   ) {}
 
   ngOnInit(){
-    this.user = this.authService.getUser()._id;
+    
+    const token = this.authService.getToken()
+    if(token){
+      this.user = this.authService.getUser(token)._id;
+    }
     this.productId = this.route.snapshot.params['id'];
 
     this.productService

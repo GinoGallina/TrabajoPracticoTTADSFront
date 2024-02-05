@@ -9,16 +9,18 @@ import { AuthService } from './services/auth-services/auth.service';
 })
 export class AppComponent {
   title = 'MarketPlace';
-  isLoginRoute!: boolean;
+  isLoginRoute: boolean=false;
 
   constructor(
     private router: Router,
     private authService: AuthService,
   ) {
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.isLoginRoute = event.url === '/login';
+        this.isLoginRoute = this.router.url === '/login';
       }
     });
+
   }
 }

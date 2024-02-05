@@ -34,11 +34,14 @@ export class ProductUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.user = this.authService.getUser()._id;
-    this.productService.getAllProducts().subscribe((res: any) => {
-      this.allProductList = res;
-      this.filteredProducts = res;
-    });
+    const token = this.authService.getToken();
+    if(token){
+      this.user = this.authService.getUser(token)._id;
+      this.productService.getAllProducts().subscribe((res: any) => {
+        this.allProductList = res;
+        this.filteredProducts = res;
+      });
+    }
   }
 
   filterProducts() {

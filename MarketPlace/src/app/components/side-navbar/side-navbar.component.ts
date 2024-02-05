@@ -18,34 +18,24 @@ export class SideNavbarComponent implements OnInit {
 
   constructor(private authService: AuthService,private route: ActivatedRoute) {
     this.currentUrl = this.route.snapshot.routeConfig?.path;
-    console.log(this.currentUrl)
   }
 
   async ngOnInit() {
-    const user = await this.waitForUsername();
-    if (user.type == 'Admin') {
-      this.isAdmin = true;
-    } else if (user.type == 'Seller') {
-      this.isSeller = true;
-    } else if (user.type == 'User') {
-      this.isUser = true;
+    
+    const token = this.authService.getToken();
+    if(token){
+      const user = this.authService.getUser(token)
+      if (user.type == 'Admin') {
+        this.isAdmin = true;
+      } else if (user.type == 'Seller') {
+        this.isSeller = true;
+      } else if (user.type == 'User') {
+        this.isUser = true;
+      }
     }
   }
 
-  waitForUsername(): Promise<any> {
-    return new Promise((resolve) => {
-      this.authService.user$
-        .pipe(
-          // Filtrar valores nulos o undefined
-          filter((user) => user !== null && user !== undefined),
-          // Tomar el primer valor que cumpla con el filtro
-          first()
-        )
-        .subscribe((user) => {
-          resolve(user);
-        });
-    });
-  }
+
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 

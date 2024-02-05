@@ -8,7 +8,7 @@ import {
   UrlTree,
   Router,
 } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { AuthService } from '../services/auth-services/auth.service';
 
 @Injectable({
@@ -21,14 +21,15 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.authService.isTokenValid().pipe(
-      tap((isValid) => {
-        if (!isValid) {
-          // Redirigir a la página de inicio de sesión o mostrar un mensaje de error.
-          this.router.navigate(['/login']);
-        } else {
-        }
-      })
-    );
+    const token = this.authService.getToken();
+    if(!token){
+      return of(false)
+    }
+    const user = this.authService.getUser(token)
+    console.log(user)
+    if(!user){
+      return of(false)
+    }
+    return of(true)
   }
 }

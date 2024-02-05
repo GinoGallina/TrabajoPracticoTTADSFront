@@ -31,10 +31,13 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.seller = this.authService.getUser()._id;
-    this.productService.getProducts(this.seller).subscribe((res: any) => {
-      this.ProductList = res;
-    });
+    const token = this.authService.getToken()
+    if(token){
+      this.seller = this.authService.getUser(token)._id;
+      this.productService.getProducts(this.seller).subscribe((res: any) => {
+        this.ProductList = res;
+      });
+    }
   }
   onDelete(id: String) {
     this.productService.deleteProduct(id).subscribe(

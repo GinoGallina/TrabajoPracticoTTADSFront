@@ -4,52 +4,62 @@
   <div
     class="overflow-x-auto shadow-md bg-grey text-white w-3/4 mx-auto my-2 rounded-md"
   >
-    <h1 class="text-4xl font-bold text-center ">Users List</h1>
+    <p class="text-4xl font-bold text-center ">Users List</p>
 
+
+    <div class="buscador my-2 flex items-center">
+      <button class="ml-2 text-white">
+        <mat-icon *ngIf="search!=''" (click)="clearSearch()">cancel</mat-icon>
+      </button>
+      <input type="text" placeholder="Buscar" [(ngModel)]="search" class="focus:outline-none border-b border-white text-white bg-transparent p-2"  >
+      <button class="ml-2 text-white">
+        <mat-icon (click)="applySearch()">search</mat-icon>
+      </button>
+    </div>
 
 
     <mat-table [dataSource]="filteredUsersList" class="custom-table">
       <!-- Category Column -->
       <ng-container matColumnDef="username" class="mat-grey">
-        <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-        <mat-cell *matCellDef="let user">
+        <mat-header-cell *matHeaderCellDef > Username </mat-header-cell>
+        <mat-cell *matCellDef="let user" >
           {{ user.username }}
         </mat-cell>
       </ng-container>
 
       <!-- State Column -->
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-        <mat-cell *matCellDef="let user">
+        <mat-header-cell *matHeaderCellDef > Email </mat-header-cell>
+        <mat-cell *matCellDef="let user" >
           {{ user.email }}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="type">
-        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-        <mat-cell *matCellDef="let user">
+        <mat-header-cell *matHeaderCellDef > Type </mat-header-cell>
+        <mat-cell *matCellDef="let user" >
           {{ user.type }}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
-        <mat-cell *matCellDef="let user">
+        <mat-header-cell *matHeaderCellDef > Address </mat-header-cell>
+        <mat-cell *matCellDef="let user" >
           {{ user.address }}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="state">
-        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
-        <mat-cell *matCellDef="let user">
+        <mat-header-cell *matHeaderCellDef > State </mat-header-cell>
+        <mat-cell *matCellDef="let user" >
           {{ user.state }}
         </mat-cell>
       </ng-container>
 
       <!-- Edit Column -->
       <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-        <mat-cell *matCellDef="let user">
+        <mat-header-cell *matHeaderCellDef > Edit </mat-header-cell>
+        <mat-cell *matCellDef="let user" >
           <button
             mat-mini-fab
             color="primary"
@@ -63,8 +73,8 @@
 
       <!-- Delete Column -->
       <ng-container matColumnDef="delete">
-        <mat-header-cell *matHeaderCellDef> Option </mat-header-cell>
-        <mat-cell *matCellDef="let user">
+        <mat-header-cell *matHeaderCellDef > Option </mat-header-cell>
+        <mat-cell *matCellDef="let user" >
           <button *ngIf="user.state === 'Active'"
             mat-mini-fab
             color="warn"
@@ -108,8 +118,8 @@
       </button>
 
       <mat-button-toggle-group [(ngModel)]="toggleValue" class="bg-gray-200 p-2 rounded-full" (change)="onToggleChange()">
-        <mat-button-toggle value="active" class="px-4 py-2">Active</mat-button-toggle>
-          <mat-button-toggle value="all" class="px-4 py-2">All</mat-button-toggle>
+        <mat-button-toggle value="active" class="px-4 py-2">Activos</mat-button-toggle>
+          <mat-button-toggle value="all" class="px-4 py-2">Todos</mat-button-toggle>
       </mat-button-toggle-group>
     </div>
 

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login-services/login.service';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
+import { AuthService } from 'src/app/services/auth-services/auth.service';
+
 
 @Component({
   selector: 'app-login-component',
@@ -18,7 +20,8 @@ export class LoginComponentComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private loginServices: LoginService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +39,14 @@ export class LoginComponentComponent {
             'Inicio de sesión exitoso! '
           );
           localStorage.setItem('token', res);
+          
           this.router.navigate(['/home']);
+          // this.authService.isTokenValid().subscribe((res)=>{
+          //   if(res){
+          //   }else{
+          //     alert('Error al verificar el token')
+          //   }
+          // })
         },
         (error) => {
           this.notificationService.showErrorNotification(

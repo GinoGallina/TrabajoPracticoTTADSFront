@@ -17,27 +17,18 @@ export class SellerGuard implements CanActivate {
     private router: Router,
   ) {}
 
-  waitForUsername(): Promise<any> {
-    return new Promise((resolve) => {
-      this.authService.user$
-        .pipe(
-          // Filtrar valores nulos o undefined
-          filter((user) => user !== null && user !== undefined),
-          // Tomar el primer valor que cumpla con el filtro
-          first(),
-        )
-        .subscribe((user) => {
-          resolve(user);
-        });
-    });
-  }
+
 
   // SE PODRIA MEJORAR HACIENDO QUE EL AUTH GUARD SEA ASINCRONO DIRECAMENTE
   async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Promise<boolean> {
-    const user = await this.waitForUsername();
+    const token = this.authService.getToken();
+    if(!token){
+      return false
+    }
+    const user = this.authService.getUser(token)
     if (user.type == 'Seller') {
       // El usuario es un vendedor, permite el acceso
       console.log('si es Seller');

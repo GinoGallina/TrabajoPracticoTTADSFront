@@ -26,7 +26,10 @@ export class EditProductComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.productId = this.route.snapshot.params['id'];
-    this.seller = this.authService.getUser()._id;
+    const token = this.authService.getToken()
+    if(token){
+      this.seller = this.authService.getUser(token)._id;
+    }
 
     this.productFormEdit = new FormGroup({
       seller: new FormControl(this.seller, [Validators.required]),

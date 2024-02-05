@@ -7,11 +7,22 @@ import { AuthService } from 'src/app/services/auth-services/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  username: string | undefined;
+  user!: any;
+  carouselItems = [
+    { image: 'path/to/image1.jpg', alt: 'Slide 1' },
+    { image: 'path/to/image2.jpg', alt: 'Slide 2' },
+    // Agrega más elementos según sea necesario
+  ];
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.username = this.authService.getUser().username;
+    const token = this.authService.getToken()
+    if(!token){
+      alert('Error al traer ele token')
+    }else{
+      this.user = this.authService.getUser(token);
+      console.log(this.user)
+    }
   }
 }
