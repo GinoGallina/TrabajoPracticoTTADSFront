@@ -12,7 +12,7 @@
         <p class="mt-6 text-4xl font-black">${{ product.price }}</p>
       </div>
 
-      <form>
+      <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
         <div>
           <input type="number" placeholder="Input Quantity" [max]="product.stock">
 
@@ -25,7 +25,6 @@
 
         <div class="mt-8 flex flex-col sm:flex-row">
           <button
-            [routerLink]="'/cart'"
             class="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-emerald-400 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="2">

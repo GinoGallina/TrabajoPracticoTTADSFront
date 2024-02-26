@@ -12,9 +12,9 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class CreateOrderComponent implements OnInit {
   productId!: String;
-  productFormEdit!: FormGroup;
+  orderForm!: FormGroup;
   user!: String;
-  product!: Product
+  product!: Product;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +26,20 @@ export class CreateOrderComponent implements OnInit {
     this.user = this.authService.getUser()._id;
     this.productId = this.route.snapshot.params['id'];
 
+    this.orderForm = new FormGroup({
+      product: new FormControl(this.productId, [Validators.required]),
+      quantity: new FormControl('0', [Validators.required, Validators.min(0)]),
+      amount: new FormControl('0', [Validators.required, Validators.min(0)]),
+      shipment_type: new FormControl('home_delivery', [Validators.required, Validators.min(0)])
+      //Terminar
+    });
+
     this.productService
       .getOneProduct(this.productId)
       .subscribe((product: any) => {
         this.product = product
       });
   }
+
+
 }
